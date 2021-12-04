@@ -10,7 +10,9 @@ class Olt extends Conexion {
     private $nombre;
     private $ip;
     private $marca;
-    private $sn;
+    private $modelo;
+    private $numero_serie;
+    private $numero_tarjetas;
 
     public function __construct() {
         parent::__construct();
@@ -53,14 +55,15 @@ class Olt extends Conexion {
     }
 
     function nuevaOlt() {
-        $insert = "insert into olts(nombre, ip, marca, sn) values(:n, :i, :m, :s)";
+        $insert = "insert into olts(nombre, ip, marca, modelo, numero_serie) values(:n, :p, :m, :d, :s)";
         $stmt = $this->conexion->prepare($insert);
         try {
             $stmt->execute([
                 ':n' => $this->nombre,
-                ':i' => $this->ip,
+                ':p' => $this->ip,
                 ':m' => $this->marca,
-                ':s' => $this->sn,
+                ':d' => $this->modelo,
+                ':s' => $this->numero_serie,
             ]);
         } catch (PDOException $ex) {
             die("Error al crear olt: " . $ex->getMessage());
@@ -68,15 +71,17 @@ class Olt extends Conexion {
     }
 
     function actualizarOlts($id) {
-        $insert = "update olts set nombre=:n, ip=:i, marca=:d, sn=:s where id=:i";
+        $insert = "update olts set nombre=:n, ip=:p, marca=:m, modelo=:d, numero_serie=:s, numero_tarjetas=:t where id=:i";
         $stmt = $this->conexion->prepare($insert);
         try {
             $stmt->execute([
                 ':i' => $id,
                 ':n' => $this->nombre,
-                ':i' => $this->ip,
+                ':p' => $this->ip,
                 ':m' => $this->marca,
-                ':s' => $this->sn,
+                ':d' => $this->modelo,
+                ':s' => $this->numero_serie,
+                ':t' => $this->numero_tarjetas,
             ]);
         } catch (PDOException $ex) {
             die("Error al actualizar olt: " . $ex->getMessage());

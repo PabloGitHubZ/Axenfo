@@ -51,8 +51,7 @@ use Clases\Olt;
                         <td><?php echo $olt->numero_serie; ?></td>
                         <td><?php echo $olt->numero_tarjetas; ?></td>
                         <td>
-                          <a class="modificar" id="modificar" href=""><button class="btn btn-warning">Modificar</button></a>
-                          <a class="borrar" id="borrar" href="eliminaNodo.php"><button class="btn btn-warning">Eliminar</button></a>
+                            <a id="modificar" href="configurarOLT.php?control=<?php echo $olt->id; ?>"><button class="btn btn-warning">Modificar</button></a>
                         </td>
                     </tr>
                 <?php

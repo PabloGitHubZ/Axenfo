@@ -8,7 +8,9 @@ use PDOException;
 class Incidencia extends Conexion {
     private $id;
     private $nodo;
-    private $fecha;
+    private $fecha_inicio;
+    private $fecha_cierre;
+    private $tipo;
     private $descripcion;
     private $estado;
 
@@ -53,8 +55,8 @@ class Incidencia extends Conexion {
     }
     
     function buscarIncidencias($clave) {
-        $consulta = "select nodo, fecha, descripcion, estado
-                     from incidencias where nodo like '%" . $clave . "%' or fecha like '%" . $clave . "%' or descripcion like '%" . $clave . "%' or estado like '%" . $clave . "%'";
+        $consulta = "select nodo, fecha_inicio, tipo, descripcion, estado
+                     from incidencias where nodo like '%" . $clave . "%' or fecha_inicio like '%" . $clave . "%' or tipo like '%" . $clave . "%' or descripcion like '%" . $clave . "%' or estado like '%" . $clave . "%'";
         $stmt = $this->conexion->prepare($consulta);
         try {
             $stmt->execute();
@@ -66,12 +68,13 @@ class Incidencia extends Conexion {
     }
     
     function creaIncidencia() {
-        $insert = "insert into incidencias(nodo, fecha, descripcion, estado) values(:n, :f, :d, :e)";
+        $insert = "insert into incidencias(nodo, fecha_inicio, tipo, descripcion, estado) values(:n, :f, :t, :d, :e)";
         $stmt = $this->conexion->prepare($insert);
         try {
             $stmt->execute([
                 ':n' => $this->nodo,
-                ':f' => $this->fecha,
+                ':f' => $this->fecha_inicio,
+                ':t' => $this->tipo,
                 ':d' => $this->descripcion,  
                 ':e' => $this->estado,   
             ]);
@@ -81,13 +84,15 @@ class Incidencia extends Conexion {
     }
 
     function actualizarIncidencia($id) {
-        $insert = "update incidencias set nodo=:n, fecha=:f, descripcion=:d, estado=:e where id=:i";
+        $insert = "update incidencias set nodo=:n, fecha_inicio=:f, fecha_cierre=:c, tipo=:t, descripcion=:d, estado=:e where id=:i";
         $stmt = $this->conexion->prepare($insert);
         try {
             $stmt->execute([
                 ':i' => $id,
                 ':n' => $this->nodo,
-                ':f' => $this->fecha,
+                ':f' => $this->fecha_inicio,
+                ':c' => $this->fecha_cierre,
+                ':t' => $this->tipo,
                 ':d' => $this->descripcion,
                 ':e' => $this->estado,
             ]);
@@ -137,7 +142,7 @@ class Incidencia extends Conexion {
         return $this->nodo;
     } 
     public function getFecha() {
-        return $this->fecha;
+        return $this->fecha_inicio;
     } 
     public function getDescripcion() {
         return $this->descripcion;
@@ -150,10 +155,18 @@ class Incidencia extends Conexion {
         $this->nodo = $nodo;
     }
 
-    public function setFecha($fecha) {
-        $this->fecha = $fecha;
+    public function setFechaInicio($fecha_inicio) {
+        $this->fecha_inicio = $fecha_inicio;
     }
 
+    public function setFechaCierre($fecha_cierre) {
+        $this->fecha_cierre = $fecha_cierre;
+    }
+       
+    public function setTipo($tipo) {
+        $this->tipo = $tipo;
+    }
+    
     public function setDescripcion($descripcion) {
         $this->descripcion = $descripcion;
     }

@@ -25,11 +25,6 @@ use Clases\Switcho;
     $numeroOlt = $nodoActual->olt;
     $numeroSwitch = $nodoActual->switch;
     
-    $controladoraActual = $controladora->getControladora($numeroControladora);
-    $oltActual = $olt->getOlt($numeroOlt);
-    $switchActual = $switch->getSwitch($numeroSwitch);
-    $numeroSwitch = $nodo->getSwitch();
-
 ?>
 
 <div class="content-wrapper">
@@ -48,16 +43,25 @@ use Clases\Switcho;
             </div>
             <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <label for="direccion">Estado de construcción:</label>
-                <output class="form-control" type="text" name="estado" id="estado"><?php echo $nodoActual->estado_construccion; ?></output>
+                <output class="form-control" type="text" name="estado" id="estado"><?php echo $nodoActual->estado; ?></output>
             </div>
             <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <label for="direccion">En incidencia:</label>
                 <output class="form-control" type="text" name="con_incidencia" id="con_incidencia"><?php echo $nodoActual->con_incidencia; ?></output>
             </div>
-        </div>
+        </div>    
+    
+<?php    
+ 
+    if ($numeroControladora != null) {
+        $controladoraActual = $controladora->getControladora($numeroControladora);
+
+?>
+
+
         <div class="panel-body">
             <div class="box-tools pull-right">
-                <a id="modificaControladora" href="configurarNodo.php?nodo=<?php echo $nodoActual->id; ?>"><button class="btn btn-warning">Modificar</button></a> 
+                <a id="modificaControladora" href="configurarControladora.php?nodo=<?php echo $nodoActual->id; ?>"><button class="btn btn-warning">Modificar</button></a> 
             </div>
             <h2 class="panel-primary">Controladora</h2>
             <div class="form-group col-lg-6 col-md-6 col-xs-12">
@@ -73,9 +77,18 @@ use Clases\Switcho;
                 <output type="text" class="form-control" name="serial" id="serial"><?php echo $controladoraActual->numero_serie; ?></output>
             </div>
         </div>
+    
+<?php    
+    
+    }
+    if ($numeroOlt != null) {
+        $oltActual = $olt->getOlt($numeroOlt);
+
+?>
+    
         <div class="panel-body">
             <div class="box-tools pull-right">
-                <a id="modificaOLT" href="configurarNodo.php?nodo=<?php echo $nodoActual->id; ?>"><button class="btn btn-warning">Modificar</button></a> 
+                <a id="modificaOLT" href="configurarOLT.php?nodo=<?php echo $nodoActual->id; ?>"><button class="btn btn-warning">Modificar</button></a> 
             </div>
             <h2 class="panel-primary">OLT</h2>
             <div class="form-group col-lg-6 col-md-6 col-xs-12">
@@ -99,9 +112,18 @@ use Clases\Switcho;
                 <output type="text" class="form-control" name="numero_tarjetas" id="numero_tarjetas"><?php echo $oltActual->numero_tarjetas; ?></output>
             </div>
         </div>
+    
+<?php
+
+    }
+    if ($numeroSwitch != null) {
+        $switchActual = $switch->getSwitch($numeroSwitch);
+
+?>    
+    
         <div class="panel-body">
             <div class="box-tools pull-right">
-                <a id="modificaSwitch" href="configurarNodo.php"><button class="btn btn-warning">Modificar</button></a> 
+                <a id="modificaSwitch" href="configurarSwitch.php"><button class="btn btn-warning">Modificar</button></a> 
             </div>
             <h2 class="panel-primary">Switch</h2>
             <div class="form-group col-lg-6 col-md-6 col-xs-12">
@@ -123,3 +145,9 @@ use Clases\Switcho;
         </div>
         </div>
 </div>
+
+<?php    
+ 
+}
+
+?>

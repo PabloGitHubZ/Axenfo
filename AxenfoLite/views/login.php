@@ -19,7 +19,7 @@ use Clases\Usuario;
     <!--  ******************  SCRIPTS  **************************  --> 
     <script src="../public/bootstrap/js/jquery.min.js"></script>
     <script src="../public/bootstrap/js/bootstrap.min.js"></script>    
-    
+     
     </head>
     <body class="hold-transition login-page">
     <div class="login-box">
@@ -63,7 +63,7 @@ use Clases\Usuario;
 
     ?>    
 
-    <script type="text/javascript" src="js/login.js"></script>
+   <script type="text/javascript" src="js/login.js"></script>
 
     </body>
 </html> 

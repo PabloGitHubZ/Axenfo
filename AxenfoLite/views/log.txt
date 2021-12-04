@@ -1,0 +1,64 @@
+
+03/12/2021 23:30:14 Nueva incidencia:  2021-12-09 1 fallo alimentación en vigo
+03/12/2021 23:51:23 Nueva incidencia:  . 3 .  2021-12-09 2 error configuración OLT a coruña
+03/12/2021 23:51:32 Nueva incidencia:  . 2 .  2021-12-02 1 fallo alimentación en vigo
+04/12/2021 00:05:56 Nueva incidencia: 8 2021-12-02 CPD fallo temperatura
+04/12/2021 00:14:32 Nueva incidencia: 2 2021-12-03 CPD fallo alimentación en vigo
+04/12/2021 00:14:46 Nueva incidencia: 8 2021-12-01 Planta Externa fallo temperatura
+04/12/2021 09:07:25 Nueva incidencia: 3 2021-12-03 CPD error configuración OLT a coruña
+04/12/2021 09:19:36 Nuevo nodo: nuevo nodo ninguna ninguna
+04/12/2021 10:31:44 Cambio en nodo: Nodo Cangas Cangas rua primera 12 Instalación Equipos 
+04/12/2021 10:33:10 Cambio en nodo: Nodo Cangas Cangas rua primera 12 Instalación Equipos 
+04/12/2021 10:34:32 Cambio en nodo: Nodo Cangas Cangas rua primera 12 Instalación Equipos 
+04/12/2021 10:34:36 Cambio en nodo: Nodo Cangas Cangas rua primera 12 Instalación Equipos 
+04/12/2021 13:15:52 Cambio en nodo: Nuevo Nodo Ninguna ninguna Instalación Equipos 
+04/12/2021 13:23:13 Cambio en nodo: Nuevo Nodo Ninguna ninguna Instalación Equipos 
+04/12/2021 13:23:26 Cambio en nodo: Nuevo Nodo Ninguna ninguna Instalación Equipos 
+04/12/2021 13:25:50 Nodo eliminado: Nuevo Nodo
+04/12/2021 13:25:56 Nodo eliminado: 
+04/12/2021 13:27:15 Nodo eliminado: Nodo Pruebas 3
+04/12/2021 14:21:44 Nuevo nodo: nodo prueba 2 asdf asdfasdfasdf
+04/12/2021 14:22:00 Nodo eliminado: Nodo Prueba 2
+04/12/2021 16:08:32 Cambio en nodo: Nodo Cangas Cangas rua primera 12 Instalación Equipos 
+04/12/2021 16:08:44 Cambio en nodo: Nodo Cangas Cangas rua primera 12 Instalación Equipos 
+04/12/2021 16:14:33 Nueva incidencia: 8 2021-12-08 Planta Externa fallo temperatura
+04/12/2021 17:02:19 Incidencia eliminada:  nodo a coruña
+04/12/2021 17:04:09 Nueva incidencia: 4 2021-12-04 Planta Externa prueba 3
+04/12/2021 17:04:30 Incidencia eliminada: 13 Nodo Prueba
+04/12/2021 17:05:35 Cambio en nodo: Nodo Prueba Vigo Llorente Instalación Equipos 
+04/12/2021 17:06:26 Cambio en nodo: Nodo Prueba Vigo Llorente Instalación Equipos 
+04/12/2021 19:36:18 Nueva incidencia: 1 2021-12-09 Planta Externa 45645
+04/12/2021 19:36:22 Nueva incidencia: 1 2021-12-09 Planta Externa 45645
+04/12/2021 19:36:30 Nueva incidencia: 4 2021-12-16 Planta Externa prueba 3dd
+04/12/2021 19:37:40 Incidencia eliminada: 16 Nodo Prueba
+04/12/2021 19:38:17 Incidencia eliminada: 15 nodo santiago
+04/12/2021 19:40:55 Incidencia eliminada: 15 
+04/12/2021 20:09:53 Cambio en incidencia: 14 nodo santiago 2021-12-09  
+04/12/2021 20:10:50 Cambio en incidencia: 14 nodo santiago 2021-12-09  
+04/12/2021 20:11:48 Cambio en nodo: Nodo Arzua Arzua castelao 12 Instalación Equipos 
+04/12/2021 20:12:40 Cambio en nodo: Nodo Arzua Arzua castelao 13 Instalación Equipos 
+04/12/2021 20:15:18 Cambio en nodo: Nodo Arzua Arzua castelao 13 Instalación Equipos 
+04/12/2021 20:15:29 Cambio en nodo: Nodo Arzua Arzua castelao 13 En incidencia Pruebas físicas
+04/12/2021 20:16:12 Cambio en nodo: Nodo Arzua Arzua castelao 13 En incidencia Pruebas físicas
+04/12/2021 20:16:13 Cambio en nodo: Nodo Arzua Arzua castelao 13 En incidencia Pruebas físicas
+04/12/2021 20:16:13 Cambio en nodo: Nodo Arzua Arzua castelao 13 En incidencia Pruebas físicas
+04/12/2021 20:16:14 Cambio en nodo: Nodo Arzua Arzua castelao 13 En incidencia Pruebas físicas
+04/12/2021 20:16:14 Cambio en nodo: Nodo Arzua Arzua castelao 13 En incidencia Pruebas físicas
+04/12/2021 20:17:32 Cambio en nodo: Nodo Arzua Arzua castelao 13 En incidencia Pruebas físicas
+04/12/2021 20:17:33 Cambio en nodo: Nodo Arzua Arzua castelao 13 En incidencia Pruebas físicas
+04/12/2021 20:17:34 Cambio en nodo: Nodo Arzua Arzua castelao 13 En incidencia Pruebas físicas
+04/12/2021 20:17:41 Cambio en nodo: Nodo Arzua Arzua castelao 13 En incidencia Pruebas físicas
+04/12/2021 20:17:41 Cambio en nodo: Nodo Arzua Arzua castelao 13 En incidencia Pruebas físicas
+04/12/2021 20:23:31 Cambio en nodo: Nodo Arzua Arzua castelao 13 En construccion Configuración Equipos
+04/12/2021 20:23:56 Cambio en nodo: Nodo Arzua Arzua castelao 13 En incidencia Pruebas de Software
+04/12/2021 20:30:15 Nueva incidencia: 4 2021-12-22 CPD prueba 3 con fallos
+04/12/2021 20:33:20 Cambio en incidencia: 17 Nodo Prueba 2021-12-22 En curso 
+04/12/2021 20:34:04 Cambio en incidencia: 17 Nodo Prueba 2021-12-22 Cerrado 2021-12-24
+04/12/2021 20:34:32 Cambio en incidencia: 17 Nodo Prueba 2021-12-22 Abierto 2021-12-24
+04/12/2021 20:34:48 Cambio en incidencia: 17 Nodo Prueba 2021-12-22 Cerrado 2021-12-24
+04/12/2021 20:35:49 Cambio en incidencia: 17 Nodo Prueba 2021-12-22 Cerrado 2021-12-24
+04/12/2021 20:35:52 Cambio en incidencia: 17 Nodo Prueba 2021-12-22 Cerrado 2021-12-24
+04/12/2021 20:36:08 Cambio en incidencia: 17 Nodo Prueba 2021-12-22 Cerrado 2021-12-24
+04/12/2021 20:36:21 Cambio en incidencia: 17 Nodo Prueba 2021-12-22 Cerrado 2021-12-24
+04/12/2021 20:37:36 Cambio en incidencia: 17 Nodo Prueba 2021-12-22 Cerrado 2021-12-24
+04/12/2021 20:37:46 Incidencia eliminada: 14 nodo santiago

@@ -41,10 +41,10 @@ $_SESSION['usuario'] = 'admin'; //Pendiente de cambiar cuando se loguee correcta
         </ul>
     </nav>
     
-    <aside class="main-sidebar" style="background: #006666">
+        <aside class="main-sidebar" style="background: #009999">
     <section class="sidebar">
         <a href="vistaGlobal.php" class="logo">
-        <img src="Logo.png" alt="Logo" width="200" height="200">
+            <img src="Logo_w.png" alt="Logo" width="220" height="220">
         </a>
         <ul class="sidebar-menu" data-widget="tree" style="color: white"><br>
 
@@ -52,27 +52,27 @@ $_SESSION['usuario'] = 'admin'; //Pendiente de cambiar cuando se loguee correcta
                 <i class="fa fa-th-large"></i> <span>Nodos</span>
                 <ul class="treeview-menu">
                     <li><a style="color: white" href="crearNodo.php">Nuevo nodo</a></li>
-                    <li><a href="listadoNodos.php">Listado nodos</a></li>
+                    <li><a style="color: white" href="listadoNodos.php">Listado nodos</a></li>
                 </ul>
             </li><br>
             <li class="treeview">
                 <i class="fa fa-tasks"></i> <span>Equipos</span>      
                 <ul class="treeview-menu">
-                    <li><a href="listadoControladoras.php"></i>Controladoras</a></li>
-                    <li><a href="listadoOlts.php"></i>OLTs</a></li>
-                    <li><a href="listadoSwitches.php"></i>Switches</a></li>
+                    <li><a style="color: white" href="listadoControladoras.php"></i>Controladoras</a></li>
+                    <li><a style="color: white" href="listadoOlts.php"></i>OLTs</a></li>
+                    <li><a style="color: white" href="listadoSwitches.php"></i>Switches</a></li>
                 </ul>
             </li><br>
             <li class="treeview">
                 <i class="fa fa-th-list"></i> <span>Incidencias</span>
                 <ul class="treeview-menu">
-                   <li><a href="crearIncidencia.php"></i>Nueva incidencia</a></li>
-                   <li><a href="listadoIncidencias.php"></i>Listado incidencias</a></li>
+                   <li><a style="color: white" href="crearIncidencia.php"></i>Nueva incidencia</a></li>
+                   <li><a style="color: white" href="listadoIncidencias.php"></i>Listado incidencias</a></li>
                 </ul> 
             </li><br>
       
-            <li><a href="Página de documentacion"><i class="fa fa-question-circle"></i> <span></span>Ayuda</a></li>
-            <li><a href="Página de datos de Axenfo"><i class="fa  fa-exclamation-circle"></i> <span></span>Acerca de</a></li>
+            <li><a style="color: darkblue" href="Página de documentacion"><i class="fa fa-question-circle"></i> <span></span>Ayuda</a></li>
+            <li><a style="color: darkblue" href="Página de datos de Axenfo"><i class="fa  fa-exclamation-circle"></i> <span></span>Acerca de</a></li>
         </ul>
       
     </section>

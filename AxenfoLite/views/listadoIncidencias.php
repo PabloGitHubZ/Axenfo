@@ -3,6 +3,8 @@
 require 'cabecera.php';
 require_once "../src/Conexion.php";
 require_once "../src/Incidencia.php";
+require_once "../src/Nodo.php";
+use Clases\Nodo;
 use Clases\Incidencia;
  
  ?>
@@ -14,7 +16,6 @@ use Clases\Incidencia;
             <div class="box-header with-border">
                 <h1 class="box-title text-center">Lista de Incidencias</h1>
                 <div class="box-tools pull-right">
-                <a href="crearNodo.php"><button class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Agregar Nodo</button></a> 
                 <a href="crearIncidencia.php"><button class="btn btn-danger"><i class='glyphicon glyphicon-plus'></i> Agregar incidencia</button></a>
                 </div> 
                 <a href="listadoNodos.php" class="btn btn-info"></i> Nodos</a>
@@ -26,10 +27,13 @@ use Clases\Incidencia;
             <div class="panel-body table-responsive">
                 <table class="table table-striped table-bordered table-condensed table-hover">
                 <thead>
-                  <th>Nodo</th>
-                  <th>Fecha</th>
+                  <th>ID</th>
+                  <th>Fecha Apertura</th>
+                  <th>Nodo afectado</th>
+                  <th>Tipo</th>
                   <th>Descripción</th>
                   <th>Estado</th>
+                  <th>Fecha Cierre</th>
                   <th></th>
                 </thead>
                 <tbody>
@@ -39,23 +43,27 @@ use Clases\Incidencia;
                     $incidencia = new Incidencia();
                     $incidencias = $incidencia->getIncidencias();
                     foreach ($incidencias as $incidencia) {
-
+                        $nodo = new Nodo();
+                        $nodoAfectado = $nodo->getNodoID($incidencia->nodo);
                 ?>
                     <tr>
-                        <td><?php echo $incidencia->nodo; ?></td>
-                        <td><?php echo $incidencia->fecha; ?></td>
+                        <td><?php echo $incidencia->id; ?></td>
+                        <td><?php echo $incidencia->fecha_inicio; ?></td>
+                        <td><?php echo $nodoAfectado->nombre; ?></td>
+                        <td><?php echo $incidencia->tipo; ?></td>
                         <td><?php echo $incidencia->descripcion; ?></td>
                         <td><?php echo $incidencia->estado; ?></td>
+                        <td><?php echo $incidencia->fecha_cierre; ?></td>
                         <td>
-                            <a class="borrar" href="configurarIncidencia.php?nodo=<?php echo $incidencia->id; ?>"><button id="modificar" class="btn btn-warning">Modificar</button></a>
-                          <a class="borrar" href="eliminaIncidencia.php"><button class="btn btn-warning">Eliminar</button></a>
+                            <a class="modificar" href="configurarIncidencia.php?incidencia=<?php echo $incidencia->id; ?>"><button id="modificar" class="btn btn-warning">Modificar</button></a>              
                         </td>                        
                     </tr>
-                    
+   
                 <?php
                     }
+                   
                 ?>
-
+                    
                 </tbody>  
                 </table>
             </div>

@@ -47,16 +47,11 @@ use Clases\Controladora;
                         <td><?php echo $controladora->ip; ?></td>
                         <td><?php echo $controladora->numero_serie; ?></td>
                         <td>
-                            <a class="modificar" id="modificar" href="configurarNodo.php"><button class="btn btn-warning">Modificar</button></a>
-                          <a class="borrar" id="borrar" href="eliminaNodo.php"><button class="btn btn-warning">Eliminar</button></a>
+                            <a id="modificar" href="configurarControladora.php?control=<?php echo $controladora->id; ?>"><button class="btn btn-warning">Modificar</button></a>
                         </td>
                     </tr>
                 <?php
                     }
-//                    if (isset($_POST['modificar'])) {
-//                        $_SESSION['nodo'] = $nombre;
-//                        header('Location:modificaNodo.php'); 
-//                    }
                 ?>
 
                 </tbody>  

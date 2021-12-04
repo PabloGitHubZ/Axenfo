@@ -10,11 +10,14 @@ class Nodo extends Conexion {
     private $nombre;
     private $ubicacion;
     private $direccion_fisica;
+    private $coordenadas;
     private $controladora;
     private $switch;
     private $olt;
     private $con_incidencia;
-    private $estado_construccion;
+    private $estado;
+    private $porcentaje;
+    private $pendiente;
 
     public function __construct() {
         parent::__construct();
@@ -57,8 +60,8 @@ class Nodo extends Conexion {
     }
 
     function buscarNodos($clave) {
-        $consulta = "select id, nombre, ubicacion, direccion_fisica, con_incidencia, estado_construccion
-                     from nodos where id like '%" . $clave . "%' or nombre like '%" . $clave . "%' or ubicacion like '%" . $clave . "%'";
+        $consulta = "select id, nombre, ubicacion, direccion_fisica, estado
+                     from nodos where id like '%" . $clave . "%' or nombre like '%" . $clave . "%' or ubicacion like '%" . $clave . "%' or direccion_fisica like '%" . $clave  . "%' or estado like '%" . $clave . "%'";
         $stmt = $this->conexion->prepare($consulta);
         try {
             $stmt->execute();
@@ -88,7 +91,7 @@ class Nodo extends Conexion {
             $stmt->execute([
                 ':n' => $this->nombre,
                 ':u' => $this->ubicacion,
-                ':d' => $this->direccion_fisica,         
+                ':d' => $this->direccion_fisica      
             ]);
         } catch (PDOException $ex) {
             die("Error al crear nodo: " . $ex->getMessage());
@@ -96,19 +99,21 @@ class Nodo extends Conexion {
     }
 
     function actualizarNodo($id) {
-        $insert = "update nodos set nombre=:n, ubicacion=:u, direccion_fisica=:d where id=:i";
+        $insert = "update nodos set ubicacion=:u, direccion_fisica=:d, coordenadas=:c, estado=:s, pendiente=:p where id=:i";
         $stmt = $this->conexion->prepare($insert);
         try {
             $stmt->execute([
                 ':i' => $id,
-                ':n' => $this->nombre,
                 ':u' => $this->ubicacion,
                 ':d' => $this->direccion_fisica,
+                ':c' => $this->coordenadas,
+                ':s' => $this->estado,
+                ':p' => $this->pendiente
             ]);
         } catch (PDOException $ex) {
             die("Error al actualizar nodo: " . $ex->getMessage());
         }
-    }    
+    }
 
     function borrarNodo($id) {
         $borrado = "delete from nodos where id=:i";
@@ -168,12 +173,8 @@ class Nodo extends Conexion {
     }    
     
     public function getEstado() {
-        return $this->estado_construccion;
+        return $this->estado;
     }    
-    
-    public function setId($id) {
-        $this->id = $id;
-    }
 
     public function setNombre($nombre) {
         $this->nombre = $nombre;
@@ -187,5 +188,24 @@ class Nodo extends Conexion {
         $this->direccion_fisica = $direccion_fisica;
     }
 
+    public function setEstado($estado) {
+        $this->estado = $estado;
+    }
+    
+   public function setCoordenadas($coordenadas) {
+        $this->coordenadas = $coordenadas;
+    }
+    
+    public function setPendiente($pendiente) {
+        $this->pendiente = $pendiente;
+    }
+    
+    public function setPorcentaje($porcentaje) {
+        $this->porcentaje = $porcentaje;
+    }
+    
+    public function setConIncidencia($con_incidencia) {
+        $this->con_incidencia = $con_incidencia;
+    }
 }
 

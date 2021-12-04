@@ -14,18 +14,9 @@ use Clases\Incidencia;
     <meta charset="utf-8">
     <title>Vista general</title>
     
-    <!--  ******************  CSS  **************************  --> 
-    <link rel="stylesheet" type="text/css" href="../public/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../public/bootstrap/css/font-awesome.css">
-    <link rel="stylesheet" type="text/css" href="../public/dist/css/adminlte.css">
-
-    <!--  ******************  SCRIPTS  **************************  --> 
-    <script src="../public/bootstrap/js/jquery.min.js"></script>
-    <script src="../public/bootstrap/js/bootstrap.min.js"></script>    
-    <script src="../public/dist/js/adminlte.min.js"></script>
-    
     </head>
     <body>
+        
     <!--    NODOS EN CONSTRUCCIÓN    -->   
     <div class="content-wrapper">
     <div class="container">
@@ -33,6 +24,7 @@ use Clases\Incidencia;
 	<div class="row">
             <div class="panel-body table-responsive">
             <a href="crearNodo.php"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Agregar Nodo</button></a>
+            <a href="listadoNodos.php"><button class="btn btn-info"><span class="glyphicon glyphicon-eye-open"></span> Ver Nodos</button></a>
 		<table class="table table-bordered table-striped">
                     <thead>
                         <th>Nombre</th>
@@ -46,7 +38,7 @@ use Clases\Incidencia;
                         $nodo = new Nodo();
                         $nodos = $nodo->getNodos();
                         foreach ($nodos as $nodo) {
-                            //if ($nodo->getEstado() != "Funcionando") {
+                            if ($nodo->estado != "Funcionando") {
                     ?>
                             <tr>
                                 <td><?php echo $nodo->nombre; ?></td>
@@ -60,10 +52,10 @@ use Clases\Incidencia;
                                 <td>
                                     <a id="ver" href="vistaNodo.php?nodo=<?php echo $nodo->id; ?>"><button class="btn btn-warning">Ver</button></a>
                                     <a id="modificar" href="configurarNodo.php?nodo=<?php echo $nodo->id; ?>"><button class="btn btn-warning">Modificar</button></a>
-                                    <a id="borrar<?php echo $nodo->id; ?>" href="eliminaNodo.php"><button class="btn btn-warning">Eliminar</button></a>
                                 </td>
                             </tr>
                     <?php
+                            }
                         }
                     ?>
 
@@ -72,16 +64,18 @@ use Clases\Incidencia;
             </div>
         </div>  
     </div>    
+        
     <!--    NODOS CON INCIDENCIA    -->    
     <div class="container">
-        <h1 class="panel-default text-center">Incidencias</h1>
+        <h1 class="panel-default text-center">Incidencias abiertas</h1>
         <div class="row">
             <div class="panel-body table-responsive">
             <a href="crearIncidencia.php"><button class="btn btn-danger"><span class="glyphicon glyphicon-plus"></span> Agregar Incidencia</button></a>
+            <a href="listadoIncidencias.php"><button class="btn btn-info"><span class="glyphicon glyphicon-eye-open"></span> Ver Incidencias</button></a>
                 <table class="table table-bordered table-striped">
                     <thead>
-                        <th>Nodo</th>
-                        <th>Fecha</th>
+                        <th>Fecha apertura</th>
+                        <th>Nodo afectado</th>
                         <th>Descripción</th>
                         <th>Estado</th>
                     </thead>
@@ -92,20 +86,22 @@ use Clases\Incidencia;
                         $incidencia = new Incidencia();
                         $incidencias = $incidencia->getIncidencias();
                         foreach ($incidencias as $incidencia) {
-
+                            if ($incidencia->estado != "Cerrado") {
+                                $nodo = new Nodo();
+                                $nodoAfectado = $nodo->getNodoID($incidencia->nodo);
                     ?>
-                        <tr>
-                            <td><?php echo $incidencia->nodo; ?></td>
-                            <td><?php echo $incidencia->fecha; ?></td>
-                            <td><?php echo $incidencia->descripcion; ?></td>
-                            <td><?php echo $incidencia->estado; ?></td>
-                            <td>
-                                <a id="modificar" href="configurarIncidencia.php?incidencia=<?php echo $incidencia->id; ?>"><button class="btn btn-warning">Modificar</button></a>
-                                <a id="borrar" href="eliminaNodo.php"><button class="btn btn-warning">Eliminar</button></a>
-                            </td> 
-                        </tr>
+                            <tr>
+                                <td><?php echo $incidencia->fecha_inicio; ?></td>
+                                <td><?php echo $nodoAfectado->nombre; ?></td>
+                                <td><?php echo $incidencia->descripcion; ?></td>
+                                <td><?php echo $incidencia->estado; ?></td>
+                                <td>
+                                    <a id="modificar" href="configurarIncidencia.php?incidencia=<?php echo $incidencia->id; ?>"><button class="btn btn-warning">Modificar</button></a>
+                                </td> 
+                            </tr>
                        
                     <?php
+                            }
                         }
                     ?>
 
@@ -116,7 +112,7 @@ use Clases\Incidencia;
     </div>  
     
     <!--    MAPA    -->
-    <div class="container iframe-mode" id="map" data-widget="iframe" style="width:50%; height:400px" data-loading-screen="100">    
+    <div class="container iframe-mode" id="map" data-widget="iframe" style="width:500; height:500px" data-loading-screen="100">    
         <script async src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap"></script>
         <script type="text/javascript" src="js/mapa.js"></script>
     </div>

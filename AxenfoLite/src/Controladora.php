@@ -52,14 +52,13 @@ class Controladora extends Conexion {
     }
 
     function nuevaControladora() {
-        $insert = "insert into controladoras(nombre, ip, marca, sn) values(:n, :i, :m, :s)";
+        $insert = "insert into controladoras(nombre, ip, numero_serie) values(:n, :p, :s)";
         $stmt = $this->conexion->prepare($insert);
         try {
             $stmt->execute([
                 ':n' => $this->nombre,
-                ':i' => $this->ip,
-                ':m' => $this->marca,
-                ':s' => $this->sn,
+                ':p' => $this->ip,
+                ':s' => $this->numero_serie,
             ]);
         } catch (PDOException $ex) {
             die("Error al crear controladora: " . $ex->getMessage());
@@ -67,15 +66,14 @@ class Controladora extends Conexion {
     }
 
     function actualizarControladora($id) {
-        $insert = "update controladoras set nombre=:n, ip=:i, marca=:d, sn=:s where id=:i";
+        $insert = "update controladoras set nombre=:n, ip=:p, sn=:s where id=:i";
         $stmt = $this->conexion->prepare($insert);
         try {
             $stmt->execute([
                 ':i' => $id,
                 ':n' => $this->nombre,
-                ':i' => $this->ip,
-                ':m' => $this->marca,
-                ':s' => $this->sn,
+                ':p' => $this->ip,
+                ':s' => $this->numero_serie,
             ]);
         } catch (PDOException $ex) {
             die("Error al actualizar nodo: " . $ex->getMessage());
@@ -114,11 +112,9 @@ class Controladora extends Conexion {
     public function getIp() {
         return $this->ip;
     } 
-    public function getMarca() {
-        return $this->marca;
-    }     
+ 
     public function getSn() {
-        return $this->sn;
+        return $this->numero_serie;
     }    
     
     public function setId($id) {
@@ -130,11 +126,9 @@ class Controladora extends Conexion {
     public function setIp($ip) {
         $this->ip = $ip;
     }
-    public function setMarca($marca) {
-        $this->marca = $marca;
-    }
+
     public function setSn($sn) {
-        $this->sn = $sn;
+        $this->numero_serie = $sn;
     }
 }
 

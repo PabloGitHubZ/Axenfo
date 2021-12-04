@@ -49,8 +49,7 @@ use Clases\Switcho;
                         <td><?php echo $switch->marca; ?></td>
                         <td><?php echo $switch->numero_serie; ?></td>
                         <td>
-                          <a class="modificar" id="modificar" href=""><button class="btn btn-warning">Modificar</button></a>
-                          <a class="borrar" id="borrar" href="eliminaNodo.php"><button class="btn btn-warning">Eliminar</button></a>
+                            <a id="modificar" href="configurarSwitch.php?control=<?php echo $switch->id; ?>"><button class="btn btn-warning">Modificar</button></a>
                         </td>
                     </tr>
                 <?php

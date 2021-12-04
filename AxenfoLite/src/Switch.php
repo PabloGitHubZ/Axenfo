@@ -10,7 +10,7 @@ class Switcho extends Conexion {
     private $nombre;
     private $ip;
     private $marca;
-    private $sn;
+    private $numero_serie;
 
     public function __construct() {
         parent::__construct();
@@ -53,14 +53,14 @@ class Switcho extends Conexion {
     }
 
     function nuevoSwitch() {
-        $insert = "insert into switches(nombre, ip, marca, sn) values(:n, :i, :m, :s)";
+        $insert = "insert into switches(nombre, ip, marca, numero_serie) values(:n, :i, :m, :s)";
         $stmt = $this->conexion->prepare($insert);
         try {
             $stmt->execute([
                 ':n' => $this->nombre,
                 ':i' => $this->ip,
                 ':m' => $this->marca,
-                ':s' => $this->sn,
+                ':s' => $this->numero_serie,
             ]);
         } catch (PDOException $ex) {
             die("Error al crear switch: " . $ex->getMessage());
@@ -68,7 +68,7 @@ class Switcho extends Conexion {
     }
 
     function actualizarSwitch($id) {
-        $insert = "update switches set nombre=:n, ip=:i, marca=:d, sn=:s where id=:i";
+        $insert = "update switches set nombre=:n, ip=:i, marca=:d, numero_serie=:s where id=:i";
         $stmt = $this->conexion->prepare($insert);
         try {
             $stmt->execute([
@@ -76,7 +76,7 @@ class Switcho extends Conexion {
                 ':n' => $this->nombre,
                 ':i' => $this->ip,
                 ':m' => $this->marca,
-                ':s' => $this->sn,
+                ':s' => $this->numero_serie,
             ]);
         } catch (PDOException $ex) {
             die("Error al actualizar switch: " . $ex->getMessage());
@@ -119,7 +119,7 @@ class Switcho extends Conexion {
         return $this->marca;
     }     
     public function getSn() {
-        return $this->sn;
+        return $this->numero_serie;
     }    
     
     public function setId($id) {

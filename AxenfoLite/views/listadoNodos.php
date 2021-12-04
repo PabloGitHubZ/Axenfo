@@ -14,8 +14,8 @@ use Clases\Nodo;
             <div class="box-header with-border">
                 <h1 class="box-title text-center">Lista de Nodos</h1>
                 <div class="box-tools pull-right">
-                        <a href="crearNodo.php"><button class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Agregar Nodo</button></a> 
-                <a href="crearIncidencia.php"><button class="btn btn-danger"><i class='glyphicon glyphicon-plus'></i> Agregar incidencia</button></a>
+                    <a href="crearNodo.php"><button class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Agregar Nodo</button></a> 
+                    <a href="crearIncidencia.php"><button class="btn btn-danger"><i class='glyphicon glyphicon-plus'></i> Agregar incidencia</button></a>
                 </div> 
                 <a href="listadoControladoras.php" class="btn btn-info"></i> Controladoras</a>
                 <a href="listadoOlts.php" class="btn btn-info"></i> OLTs</a>
@@ -29,8 +29,7 @@ use Clases\Nodo;
                   <th>Nombre</th>
                   <th>Ubicacion</th>
                   <th>Dirección</th>
-                  <th>Funcionamiento</th>
-                  <th>Estado construcción</th>
+                  <th>Estado</th>
                   <th></th>
                 </thead>
                 <tbody>
@@ -38,26 +37,22 @@ use Clases\Nodo;
                 <?php
                 
                     $nodo = new Nodo();
-                    $hayNodos = $nodo->hayNodos();
-                    if ($hayNodos == true) {
-                        $nodos = $nodo->getNodos();
-                        foreach ($nodos as $nodo) {
-                            
+                    $nodos = $nodo->getNodos();
+                    foreach ($nodos as $nodo) {
+
                 ?>
-                        <tr>
-                            <td><?php echo $nodo->nombre; ?></td>
-                            <td><?php echo $nodo->ubicacion; ?></td>
-                            <td><?php echo $nodo->direccion_fisica; ?></td>
-                            <td><?php if ($nodo->con_incidencia == false) echo "SI"; ?></td>
-                            <td><?php echo $nodo->estado_construccion; ?></td>
-                            <td>
-                                <a id="ver" href="vistaNodo.php?nodo=<?php echo $nodo->id; ?>"><button class="btn btn-warning">Ver</button></a>
-                                <a id="modificar<?php $_SESSION['nodo'] = $id; ?>" href="configurarNodo.php?nodo=<?php echo $nodo->id; ?>"><button class="btn btn-warning">Modificar</button></a>
-                                <a id="borrar<?php echo $nodo->id; ?>" href="eliminaNodo.php"><button class="btn btn-warning">Eliminar</button></a>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td><?php echo $nodo->nombre; ?></td>
+                        <td><?php echo $nodo->ubicacion; ?></td>
+                        <td><?php echo $nodo->direccion_fisica; ?></td>
+                        <td><?php echo $nodo->estado; ?></td>
+                        <td>
+                            <a id="ver" href="vistaNodo.php?nodo=<?php echo $nodo->id; ?>"><button class="btn btn-warning">Ver</button></a>
+                            <a id="modificar" href="configurarNodo.php?nodo=<?php echo $nodo->id; ?>"><button class="btn btn-warning">Modificar</button></a>
+                        </td>
+                    </tr>
+                    
                 <?php
-                        }
                     }
                 ?>
 
