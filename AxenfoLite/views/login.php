@@ -23,10 +23,10 @@ use Clases\Usuario;
     </head>
     <body class="hold-transition login-page">
     <div class="login-box">
-            <div class="login-logo">
-                <img src="Logo.png" alt="Logo" width="200" height="200">
-                <div><b>AXENFO</b> | Xestión de Nodos</div>
-            </div>
+        <div class="login-logo">
+            <img src="Logo.png" alt="Logo" width="200" height="200">
+            <div><b>AXENFO</b> | Xestión de Nodos</div>
+        </div>
         <div class="login-box-body">
             <form method="POST" id="acceso">
             <div class="form-group has-feedback">
@@ -41,7 +41,7 @@ use Clases\Usuario;
                 <div class="col-xs-8">
                 </div>
                 <div class="col-xs-4">
-                <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+                <button type="submit" id="ingresar" name="ingresar" class="btn btn-primary btn-block">Ingresar</button>
                 </div>
             </div>
             </form>        
@@ -49,21 +49,23 @@ use Clases\Usuario;
     </div>
         
     <?php
-
-//    if (isset($_POST['submit'])) {
-//        $usuario = new Usuario();
-//        $user = $_POST['user'];
-//        $passNoHash = $_POST['pass'];
-//        $pass = hash("SHA256", $pass);
-//        $acceso = $usuario->comprobarUsuario($user, $pass);
-//
-//        if ($acceso == true) header('Location:vistaGlobal.php'); 
-//        else header('Location:login.php');  
-//    }
-
+    
+    if (isset($_POST['ingresar'])) {
+        $usuario = new Usuario();
+        $user = $_POST['user'];
+        $pass = $_POST['pass'];
+        $acceso = $usuario->comprobarUsuario($user, $pass);
+        if ($acceso == true) { 
+            $_SESSION['usuario'] = $user;
+            session_start();
+            $_SESSION['nodo'] = 0;
+            header('Location:vistaGlobal.php'); 
+        }
+        else echo "<script> alert('Datos incorrectos'); </script>";  
+    }
     ?>    
 
-   <script type="text/javascript" src="js/login.js"></script>
+<!--    <script type="text/javascript" src="js/login.js"></script>-->
 
     </body>
 </html> 

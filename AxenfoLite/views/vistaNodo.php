@@ -33,6 +33,7 @@ use Clases\Switcho;
             <div class="box-tools pull-right">
                 <a id="modificaNodo" href="configurarNodo.php?nodo=<?php echo $nodoActual->id; ?>"><button class="btn btn-warning">Modificar</button></a> 
             </div>
+            <h2 class="panel-primary text-center">Datos generales</h2>
             <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <label for="ubicacion">Ubicación:</label>
                 <output class="form-control" type="text" name="ubicacion" id="ubicacion"><?php echo $nodoActual->ubicacion; ?></output>
@@ -42,12 +43,16 @@ use Clases\Switcho;
                 <output class="form-control" type="text" name="direccion" id="direccion"><?php echo $nodoActual->direccion_fisica; ?></output>
             </div>
             <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                <label for="direccion">Estado de construcción:</label>
+                <label for="coordenadas">Coordenadas</label>
+                <output class="form-control" type="text" name="coordenadas" id="coordenadas"><?php echo $nodoActual->coordenadas; ?></output>
+            </div>
+            <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <label for="direccion">Estado:</label>
                 <output class="form-control" type="text" name="estado" id="estado"><?php echo $nodoActual->estado; ?></output>
             </div>
             <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                <label for="direccion">En incidencia:</label>
-                <output class="form-control" type="text" name="con_incidencia" id="con_incidencia"><?php echo $nodoActual->con_incidencia; ?></output>
+                <label for="direccion">Pendiente de:</label>
+                <output class="form-control" type="text"  name="pendienteDe" id="pendienteDe"><?php echo $nodoActual->pendiente; ?></output>
             </div>
         </div>    
     
@@ -61,9 +66,9 @@ use Clases\Switcho;
 
         <div class="panel-body">
             <div class="box-tools pull-right">
-                <a id="modificaControladora" href="configurarControladora.php?nodo=<?php echo $nodoActual->id; ?>"><button class="btn btn-warning">Modificar</button></a> 
+                <a id="modificaControladora" href="configurarControladora.php?control=<?php echo $controladoraActual->id; ?>"><button class="btn btn-warning">Modificar</button></a>
             </div>
-            <h2 class="panel-primary">Controladora</h2>
+            <h2 class="panel-primary text-center">Controladora</h2>
             <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <label for="nombre">Nombre:</label>
                 <output type="text" class="form-control" name="nombre" id="nombre"><?php echo $controladoraActual->nombre; ?></output>
@@ -88,9 +93,9 @@ use Clases\Switcho;
     
         <div class="panel-body">
             <div class="box-tools pull-right">
-                <a id="modificaOLT" href="configurarOLT.php?nodo=<?php echo $nodoActual->id; ?>"><button class="btn btn-warning">Modificar</button></a> 
+                <a id="modificaOLT" href="configurarOLT.php?olt=<?php echo $oltActual->id; ?>"><button class="btn btn-warning">Modificar</button></a> 
             </div>
-            <h2 class="panel-primary">OLT</h2>
+            <h2 class="panel-primary text-center">OLT</h2>
             <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <label for="nombre">Nombre:</label>
                 <output type="text" class="form-control" name="nombre" id="nombre"><?php echo $oltActual->nombre; ?></output>
@@ -103,6 +108,10 @@ use Clases\Switcho;
                 <label for="marca">Marca:</label>
                 <output type="text" class="form-control" name="marca" id="marca"><?php echo $oltActual->marca; ?></output>
             </div>
+            <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <label for="modelo">Modelo:</label>
+                <output type="text" class="form-control" name="modelo" id="modelo"><?php echo $oltActual->modelo; ?></output>
+            </div>             
             <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <label for="serial">Número de Serie:</label>
                 <output type="text" class="form-control" name="serial" id="serial"><?php echo $oltActual->numero_serie; ?></output>
@@ -123,9 +132,9 @@ use Clases\Switcho;
     
         <div class="panel-body">
             <div class="box-tools pull-right">
-                <a id="modificaSwitch" href="configurarSwitch.php"><button class="btn btn-warning">Modificar</button></a> 
+                <a id="modificaSwitch" href="configurarSwitch.php?switch=<?php echo $switchActual->id; ?>"><button class="btn btn-warning">Modificar</button></a>
             </div>
-            <h2 class="panel-primary">Switch</h2>
+            <h2 class="panel-primary text-center">Switch</h2>
             <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <label for="nombre">Nombre:</label>
                 <output type="text" class="form-control" name="nombre" id="nombre"><?php echo $switchActual->nombre; ?></output>
@@ -139,6 +148,10 @@ use Clases\Switcho;
                 <output type="text" class="form-control" name="marca" id="marca"><?php echo $switchActual->marca; ?></output>
             </div>
             <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <label for="modelo">Modelo:</label>
+                <output type="text" class="form-control" name="modelo" id="modelo"><?php echo $switchActual->modelo; ?></output>
+            </div> 
+            <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <label for="serial">Número de Serie:</label>
                 <output type="text" class="form-control" name="serial" id="serial"><?php echo $switchActual->numero_serie; ?></output>
             </div>
@@ -147,7 +160,7 @@ use Clases\Switcho;
 </div>
 
 <?php    
- 
-}
+
+    }
 
 ?>

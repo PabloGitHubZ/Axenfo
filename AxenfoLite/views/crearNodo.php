@@ -3,7 +3,13 @@
 require 'cabecera.php';
 require_once "../src/Conexion.php";
 require_once "../src/Nodo.php";
+require_once "../src/Controladora.php";
+require_once "../src/Olt.php";
+require_once "../src/Switch.php";
 use Clases\Nodo;
+use Clases\Controladora;
+use Clases\Olt;
+use Clases\Switcho;
 
 ?>
 
@@ -37,23 +43,67 @@ use Clases\Nodo;
         $nombre = trim($_POST['nombre']);
         $ubicacion = trim($_POST['ubicacion']);
         $direccion = trim($_POST['direccion']);
+        
+        $ipInicial = "0.0.0.0";
+        $serialInicial = "000000";
+        $nombreControladora = "Controladora " . $nombre;
+        $nombreOLT = "OLT " . $nombre;
+        $nombreSwitch = "Switch " . $nombre;
         $nodo = new Nodo();
+        
         if ($nodo->existeNodo($nombre)) {
             $nodo = null;
-            echo("Ya existe ese nodo");   
+            echo "<script> alert('Ya existe ese nodo'); </script>";  
+            header("Location:vistaGlobal.php");
         }
-        $nodo->setNombre(ucwords($nombre));
-        $nodo->setUbicacion(ucwords($ubicacion));
-        $nodo->setDireccion($direccion);
-        $nodo->creaNodo();
-        
-        $archivoLog = fopen("log.txt", 'a') or die("Error creando archivo de log");
-        fwrite($archivoLog, "\n" . date("d/m/Y H:i:s") . " Nuevo nodo: " . $nombre . " " . $ubicacion . " " . $direccion) or die("Error escribiendo en el archivo log");
-        fclose($archivoLog);
-        
-        $nodo = null;    
-        
-        header("Location:configurarNodo.php?nodo=" . $nodo->getId());
+        else {
+            $controladora = new Controladora();
+            $olt = new Olt();
+            $switch = new Switcho();
+            
+            $controladora->setNombre($nombreControladora);
+            $controladora->setIp($ipInicial);
+            $controladora->setSn($serialInicial);
+            $controladora->nuevaControladora();
+            $controlActual = $controladora->getControladoraN($nombreControladora);
+            "<script> console.log('34234'); </script>";
+            $archivoLog = fopen("log.txt", 'a') or die("Error creando archivo de log");
+            fwrite($archivoLog, "\n" . date("d/m/Y H:i:s") . " Nueva controladora: " . $nombreControladora . " " . $ipInicial . " " . $serialInicial) or die("Error escribiendo en el archivo log");
+            fclose($archivoLog);
+
+            $olt->setNombre($nombreOLT);
+            $olt->setIp($ipInicial);
+            $olt->setSn($serialInicial);
+            $olt->nuevaOlt();
+            $oltActual = $olt->getOltN($nombreOLT);
+            $archivoLog = fopen("log.txt", 'a') or die("Error creando archivo de log");
+            fwrite($archivoLog, "\n" . date("d/m/Y H:i:s") . " Nueva OLT: " . $nombreOLT . " " . $ipInicial . " " . $serialInicial) or die("Error escribiendo en el archivo log");
+            fclose($archivoLog);
+
+            $switch->setNombre($nombreSwitch);
+            $switch->setIp($ipInicial);
+            $switch->setSn($serialInicial);
+            $switch->nuevoSwitch();
+            $switchActual = $switch->getSwitchN($nombreSwitch);
+            $archivoLog = fopen("log.txt", 'a') or die("Error creando archivo de log");
+            fwrite($archivoLog, "\n" . date("d/m/Y H:i:s") . " Nuevo Switch: " . $nombreSwitch . " " . $ipInicial . " " . $serialInicial) or die("Error escribiendo en el archivo log");
+            fclose($archivoLog);        
+
+            $nodo->setNombre(ucwords($nombre));
+            $nodo->setUbicacion(ucwords($ubicacion));
+            $nodo->setDireccion($direccion);
+            $nodo->setControl($controlActual->id);
+            $nodo->setOlt($oltActual->id);
+            $nodo->setSwitch($switchActual->id);
+            $nodo->creaNodo();
+            $archivoLog = fopen("log.txt", 'a') or die("Error creando archivo de log");
+            fwrite($archivoLog, "\n" . date("d/m/Y H:i:s") . " Nuevo nodo: " . $nombre . " " . $ubicacion . " " . $direccion) or die("Error escribiendo en el archivo log");
+            fclose($archivoLog);
+
+            $nodo = null; $controladora = null; $olt = null; $switch = null;
+
+            header("Location:configurarNodo.php?nodo=" . $nodo->getId());
+        }
     }
     ?>
 

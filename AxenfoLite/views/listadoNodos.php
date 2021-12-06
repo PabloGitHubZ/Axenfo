@@ -30,6 +30,7 @@ use Clases\Nodo;
                   <th>Ubicacion</th>
                   <th>Dirección</th>
                   <th>Estado</th>
+                  <th>Pendiente de</th>
                   <th></th>
                 </thead>
                 <tbody>
@@ -46,6 +47,7 @@ use Clases\Nodo;
                         <td><?php echo $nodo->ubicacion; ?></td>
                         <td><?php echo $nodo->direccion_fisica; ?></td>
                         <td><?php echo $nodo->estado; ?></td>
+                        <td><?php echo $nodo->pendiente; ?></td>
                         <td>
                             <a id="ver" href="vistaNodo.php?nodo=<?php echo $nodo->id; ?>"><button class="btn btn-warning">Ver</button></a>
                             <a id="modificar" href="configurarNodo.php?nodo=<?php echo $nodo->id; ?>"><button class="btn btn-warning">Modificar</button></a>

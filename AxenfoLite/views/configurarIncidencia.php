@@ -19,10 +19,14 @@ $idNodo = $nodoAfectado->id;
 ?>
     <div class="content-wrapper">
         <h1 class="page-header text-center">Actualizar Incidencia <?php echo $idIncidencia; ?></h1>
+        <div class="form-group box-tools pull-right">
+            <a href="alertaBorrado.php?incidencia=<?php echo $incidenciaActual->id; ?>"><button class="btn btn-danger"><i class="glyphicon glyphicon-alert"></i> Eliminar Incidencia</button></a>
+        </div>
         <div class="form-row" id="formNodo">
           <form action="" name="form_Incidencia" id="form_Incidencia" method="POST">
             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <button class="btn btn-danger" type="submit" name="borrar" id="borrar" ><i class="glyphicon glyphicon-alert"></i> Eliminar Incidencia</button>
+                <!--<button class="btn btn-danger" type="submit" name="borrar" id="borrar" ><i class="glyphicon glyphicon-alert"></i> Eliminar Incidencia</button>-->
+                
             </div>     
               <div class="form-group col-lg-6 col-md-6 col-xs-12">
               <label for="nodo">Nodo afectado:</label>
@@ -64,7 +68,6 @@ $idNodo = $nodoAfectado->id;
           </form>
         </div>
     </div>
-    <script type="text/javascript" src="js/borrar.js"></script>
 
     <?php
 
@@ -91,16 +94,4 @@ $idNodo = $nodoAfectado->id;
         header("Location:configurarNodo.php?nodo=" . $nodo->getId());
     }
     
-    if (isset($_POST['borrar'])) {
-        $incidencia = new Incidencia();
-        echo "<script> confirmarIncidencia(); </script>";
-        $incidencia->borrarIncidencia($idIncidencia);
-        
-        $archivoLog = fopen("log.txt", 'a') or die("Error creando archivo de log");
-        fwrite($archivoLog, "\n" . date("d/m/Y H:i:s") . " Incidencia eliminada: " . $idIncidencia . " " . $nombreNodo) or die("Error escribiendo en el archivo log");
-        fclose($archivoLog);   
-
-        $incidencia = null;       
-        header("Location:../listadoIncidencias.php");
-    } 
     ?>

@@ -29,6 +29,18 @@ class Olt extends Conexion {
         $this->conexion = null;
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
+
+    function getOltN($nombre) {
+        $consulta = "select * from olts where nombre=:n";
+        $stmt = $this->conexion->prepare($consulta);
+        try {
+            $stmt->execute([':n' => $nombre]);
+        } catch (PDOException $ex) {
+            die("Error al recuperar olt: " . $ex->getMessage());
+        }
+        $this->conexion = null;
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
     
     function getOlts() {
         $consulta = "select * from olts order by id";
@@ -55,14 +67,12 @@ class Olt extends Conexion {
     }
 
     function nuevaOlt() {
-        $insert = "insert into olts(nombre, ip, marca, modelo, numero_serie) values(:n, :p, :m, :d, :s)";
+        $insert = "insert into olts(nombre, ip, numero_serie) values(:n, :p, :s)";
         $stmt = $this->conexion->prepare($insert);
         try {
             $stmt->execute([
                 ':n' => $this->nombre,
                 ':p' => $this->ip,
-                ':m' => $this->marca,
-                ':d' => $this->modelo,
                 ':s' => $this->numero_serie,
             ]);
         } catch (PDOException $ex) {
@@ -139,8 +149,14 @@ class Olt extends Conexion {
     public function setMarca($marca) {
         $this->marca = $marca;
     }
+    public function setModelo($modelo) {
+        $this->modelo = $modelo;
+    }
+    public function setTarjetas($tarjetas) {
+        $this->numero_tarjetas = $tarjetas;
+    }
     public function setSn($sn) {
-        $this->sn = $sn;
+        $this->numero_serie = $sn;
     }
 }
 

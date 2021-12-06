@@ -16,7 +16,6 @@ use Clases\Switcho;
             <div class="box-header with-border">
                 <h1 class="box-title text-center">Lista de Switches</h1>
                 <div class="box-tools pull-right">
-                <a href="crearNodo.php"><button class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Agregar Nodo</button></a> 
                 <a href="crearIncidencia.php"><button class="btn btn-danger"><i class='glyphicon glyphicon-plus'></i> Agregar incidencia</button></a>
                 </div> 
                 <a href="listadoNodos.php" class="btn btn-info"></i> Nodos</a>
@@ -31,6 +30,7 @@ use Clases\Switcho;
                   <th>Nombre</th>
                   <th>IP</th>
                   <th>Marca</th>
+                  <th>Modelo</th>
                   <th>Serial</th>
                   <th></th>
                 </thead>
@@ -47,17 +47,14 @@ use Clases\Switcho;
                         <td><?php echo $switch->nombre; ?></td>
                         <td><?php echo $switch->ip; ?></td>
                         <td><?php echo $switch->marca; ?></td>
+                        <td><?php echo $switch->modelo; ?></td>
                         <td><?php echo $switch->numero_serie; ?></td>
                         <td>
-                            <a id="modificar" href="configurarSwitch.php?control=<?php echo $switch->id; ?>"><button class="btn btn-warning">Modificar</button></a>
+                            <a id="modificar" href="configurarSwitch.php?switch=<?php echo $switch->id; ?>"><button class="btn btn-warning">Modificar</button></a>
                         </td>
                     </tr>
                 <?php
                     }
-//                    if (isset($_POST['modificar'])) {
-//                        $_SESSION['nodo'] = $nombre;
-//                        header('Location:modificaNodo.php'); 
-//                    }
                 ?>
 
                 </tbody>  

@@ -14,7 +14,6 @@ class Usuario extends Conexion {
     } 
     
     public function comprobarUsuario($user, $pass) {
-              
         $consulta = "select usuario from usuarios where usuario=:u and clave=:c";
         $stmt = $this->conexion->prepare($consulta);
         try {
@@ -23,10 +22,7 @@ class Usuario extends Conexion {
         } catch (PDOException $ex) {
             die("Error al comprobar usuario: " . $ex->getMessage());
         }
-        
         if ($stmt->rowCount() == 0) return false;
-        $_SESSION['usuario'] = $user;
-        $_SESSION['nodo']= 0;
         return true;
     }
 }

@@ -16,7 +16,6 @@ use Clases\Controladora;
             <div class="box-header with-border">
                 <h1 class="box-title text-center">Lista de Controladoras</h1>
                 <div class="box-tools pull-right">
-                <a href="crearNodo.php"><button class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Agregar Nodo</button></a> 
                 <a href="crearIncidencia.php"><button class="btn btn-danger"><i class='glyphicon glyphicon-plus'></i> Agregar incidencia</button></a>
                 </div> 
                 <a href="listadoNodos.php" class="btn btn-info"></i> Nodos</a>

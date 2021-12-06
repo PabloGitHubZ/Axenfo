@@ -10,6 +10,7 @@ class Switcho extends Conexion {
     private $nombre;
     private $ip;
     private $marca;
+    private $modelo;
     private $numero_serie;
 
     public function __construct() {
@@ -21,6 +22,18 @@ class Switcho extends Conexion {
         $stmt = $this->conexion->prepare($consulta);
         try {
             $stmt->execute([':i' => $id]);
+        } catch (PDOException $ex) {
+            die("Error al recuperar switch: " . $ex->getMessage());
+        }
+        $this->conexion = null;
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
+
+    function getSwitchN($nombre) {
+        $consulta = "select * from switches where nombre=:n";
+        $stmt = $this->conexion->prepare($consulta);
+        try {
+            $stmt->execute([':n' => $nombre]);
         } catch (PDOException $ex) {
             die("Error al recuperar switch: " . $ex->getMessage());
         }
@@ -53,13 +66,12 @@ class Switcho extends Conexion {
     }
 
     function nuevoSwitch() {
-        $insert = "insert into switches(nombre, ip, marca, numero_serie) values(:n, :i, :m, :s)";
+        $insert = "insert into switches(nombre, ip, numero_serie) values(:n, :i, :s)";
         $stmt = $this->conexion->prepare($insert);
         try {
             $stmt->execute([
                 ':n' => $this->nombre,
                 ':i' => $this->ip,
-                ':m' => $this->marca,
                 ':s' => $this->numero_serie,
             ]);
         } catch (PDOException $ex) {
@@ -68,14 +80,15 @@ class Switcho extends Conexion {
     }
 
     function actualizarSwitch($id) {
-        $insert = "update switches set nombre=:n, ip=:i, marca=:d, numero_serie=:s where id=:i";
+        $insert = "update switches set nombre=:n, ip=:p, marca=:m, modelo=:d, numero_serie=:s where id=:i";
         $stmt = $this->conexion->prepare($insert);
         try {
             $stmt->execute([
                 ':i' => $id,
                 ':n' => $this->nombre,
-                ':i' => $this->ip,
+                ':p' => $this->ip,
                 ':m' => $this->marca,
+                ':d' => $this->modelo,
                 ':s' => $this->numero_serie,
             ]);
         } catch (PDOException $ex) {
@@ -134,8 +147,11 @@ class Switcho extends Conexion {
     public function setMarca($marca) {
         $this->marca = $marca;
     }
+    public function setModelo($modelo) {
+        $this->modelo = $modelo;
+    }
     public function setSn($sn) {
-        $this->sn = $sn;
+        $this->numero_serie = $sn;
     }
 }
 

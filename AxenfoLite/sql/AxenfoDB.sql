@@ -13,7 +13,7 @@ GRANT all on AXENFODB.* to noc@'localhost';
 -- Tabla Controladoras
 create table if not exists controladoras(
     id int AUTO_INCREMENT primary key,
-    nombre varchar(20) not null,
+    nombre varchar(30) not null,
     ip varchar(20) not null,
     numero_serie varchar(30)
 );
@@ -21,16 +21,17 @@ create table if not exists controladoras(
 -- Tabla Switches
 create table if not exists switches(
     id int AUTO_INCREMENT primary key,
-    nombre varchar(20) not null,
+    nombre varchar(30) not null,
     ip varchar(20) not null,
     marca varchar(10),
+    modelo varchar(10),
     numero_serie varchar(30)
 );
 
 -- Tabla OLTs
 create table if not exists olts(
     id int AUTO_INCREMENT primary key,
-    nombre varchar(20) not null,
+    nombre varchar(30) not null,
     ip varchar(20) not null,
     marca varchar(10),
     modelo varchar(10),
@@ -41,7 +42,7 @@ create table if not exists olts(
 -- Tabla Tarjetas OLT
 create table if not exists tarjetas(
     id int AUTO_INCREMENT primary key,
-    nombre varchar(20) not null,
+    nombre varchar(30) not null,
     olt int,
     numero_serie varchar(30),
     constraint fk_tar_olt foreign key(olt) references olts(id) on update cascade on delete cascade
@@ -50,8 +51,8 @@ create table if not exists tarjetas(
 -- Tabla Nodos
 create table if not exists nodos(
     id int AUTO_INCREMENT primary key,
-    nombre varchar(20) unique not null,
-    ubicacion varchar(20) not null,
+    nombre varchar(30) unique not null,
+    ubicacion varchar(40) not null,
     direccion_fisica varchar(60) not null,
     coordenadas varchar(30),
     controladora int,
@@ -60,7 +61,7 @@ create table if not exists nodos(
     con_incidencia boolean,
     estado enum('En construcción', 'Funcionando', 'En incidencia'),
     porcentaje int,
-    pendiente ('Instalación Equipos', 'Implementación Red', 'Configuración Equipos', 'Pruebas físicas', 'Pruebas de Software'),
+    pendiente ('Nada Pendiente', 'Instalación Equipos', 'Implementación Red', 'Configuración Equipos', 'Pruebas físicas', 'Pruebas de Software'),
     constraint fk_nod_control foreign key(controladora) references controladoras(id) on update cascade on delete cascade,
     constraint fk_nod_switch foreign key(switch) references switches(id) on update cascade on delete cascade,
     constraint fk_nod_olt foreign key(olt) references olts(id) on update cascade on delete cascade

@@ -85,13 +85,16 @@ class Nodo extends Conexion {
     }
 
     function creaNodo() {
-        $insert = "insert into nodos(nombre, ubicacion, direccion_fisica) values(:n, :u, :d)";
+        $insert = "insert into nodos(nombre, ubicacion, direccion_fisica, controladora, olt, switch) values(:n, :u, :d, :c, :o, :s)";
         $stmt = $this->conexion->prepare($insert);
         try {
             $stmt->execute([
                 ':n' => $this->nombre,
                 ':u' => $this->ubicacion,
-                ':d' => $this->direccion_fisica      
+                ':d' => $this->direccion_fisica,
+                ':c' => $this->controladora,
+                ':o' => $this->olt,
+                ':s' => $this->switch
             ]);
         } catch (PDOException $ex) {
             die("Error al crear nodo: " . $ex->getMessage());
@@ -207,5 +210,17 @@ class Nodo extends Conexion {
     public function setConIncidencia($con_incidencia) {
         $this->con_incidencia = $con_incidencia;
     }
+    
+    public function setControl($controladora) {
+        $this->controladora = $controladora;
+    }
+    
+    public function setOlt($olt) {
+        $this->olt = $olt;
+    }
+    
+    public function setSwitch($switch) {
+        $this->switch = $switch;
+    }       
 }
 

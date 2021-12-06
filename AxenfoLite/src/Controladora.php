@@ -26,6 +26,18 @@ class Controladora extends Conexion {
         $this->conexion = null;
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
+
+    function getControladoraN($nombre) {
+        $consulta = "select * from controladoras where nombre=:n";
+        $stmt = $this->conexion->prepare($consulta);
+        try {
+            $stmt->execute([':n' => $nombre]);
+        } catch (PDOException $ex) {
+            die("Error al recuperar controladora: " . $ex->getMessage());
+        }
+        $this->conexion = null;
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
     
     function getControladoras() {
         $consulta = "select * from controladoras order by id";
@@ -66,7 +78,7 @@ class Controladora extends Conexion {
     }
 
     function actualizarControladora($id) {
-        $insert = "update controladoras set nombre=:n, ip=:p, sn=:s where id=:i";
+        $insert = "update controladoras set nombre=:n, ip=:p, numero_serie=:s where id=:i";
         $stmt = $this->conexion->prepare($insert);
         try {
             $stmt->execute([
