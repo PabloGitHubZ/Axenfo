@@ -27,6 +27,7 @@ header("Refresh:30");
                         <th>Nombre</th>
                         <th>Ubicación</th>
                         <th>Estado</th>
+                        <th>Pendiente de</th>
                     </thead>
                     <tbody>     
 
@@ -35,17 +36,25 @@ header("Refresh:30");
                         $nodo = new Nodo();
                         $nodos = $nodo->getNodos();
                         foreach ($nodos as $nodo) {
-                            if ($nodo->estado != "Funcionando") {
+                            if ($nodo->estado == "En construcción") {
                     ?>
                             <tr>
                                 <td><?php echo $nodo->nombre; ?></td>
                                 <td><?php echo $nodo->ubicacion; ?></td>
-                                <td><?php // echo $nodo->estado_construccion; ?>
+                                <td><?php   switch ($nodo->pendiente) {
+                                                case "Instalación Equipos": $porcentaje = 1; break;
+                                                case "Implementación Red": $porcentaje = 20; break;
+                                                case "Configuración Equipos": $porcentaje = 40; break;
+                                                case "Pruebas Físicas": $porcentaje = 60; break;
+                                                case "Pruebas de Red": $porcentaje = 80; break;           
+                                            }
+                                ?>
                                     <div class="progress">
-                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<?php echo $porcentaje ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $porcentaje ?>%">
                                         </div>
                                     </div>
                                 </td>
+                                <td><?php echo $nodo->pendiente; ?></td>
                                 <td>
                                     <a id="ver" href="vistaNodo.php?nodo=<?php echo $nodo->id; ?>"><button class="btn btn-warning">Ver</button></a>
                                     <a id="modificar" href="configurarNodo.php?nodo=<?php echo $nodo->id; ?>"><button class="btn btn-warning">Modificar</button></a>
@@ -106,12 +115,15 @@ header("Refresh:30");
                 </table> 
             </div>
 	</div>
-    </div>  
+    </div>
     
     <!--    MAPA    -->
-    <div class="container iframe-mode" id="map" data-widget="iframe" style="width:500; height:500px" data-loading-screen="100">    
+  
+    <div class="container iframe-mode" id="map" data-widget="iframe" style="width:600; height:500px" data-loading-screen="100">    
         <script async src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap"></script>
-        <script type="text/javascript" src="js/mapa.js"></script>
+        <?php include '../mapa.php'; ?>
+        <!--<script type="text/javascript" src="js/mapa.js"></script>-->
+
     </div>
     </div>
 </body>

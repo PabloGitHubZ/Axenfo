@@ -52,7 +52,7 @@ use Clases\Switcho;
                 
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <label for="registro">Registro:</label>
-                    <output class="form-control" type="text"  name="registro" id="registro" required><?php if ($opcion == "incidencia") echo "incidencia " . $incidenciaActual->id; else echo $nombreNodo;?></output>
+                    <output class="form-control" type="text"  name="registro" id="registro" required><?php if ($opcion == "incidencia") echo "incidencia " . $incidenciaActual->id; else echo $nombreNodo; ?></output>
                 </div>
                 <div class="panel-body table-responsive">
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -78,8 +78,7 @@ use Clases\Switcho;
                         fwrite($archivoLog, "\n" . date("d/m/Y H:i:s") . " Switch eliminado: " . $nombreNodo) or die("Error escribiendo en el archivo log");
                         fclose($archivoLog);
                         $nodo = null; $controladora = null; $olt = null; $switch = null;
-                        $_SESSION['nodo'] = 0;
-                        header('Location:vistaGlobal.php'); 
+                        echo "<script> alert('Registro borrado'); $(location).attr('href','vistaGlobal.php'); </script>"; 
                     }
                     
                     if (isset($_POST['borrar']) and ($opcion == "incidencia")) {
@@ -89,7 +88,7 @@ use Clases\Switcho;
                         fwrite($archivoLog, "\n" . date("d/m/Y H:i:s") . " Incidencia eliminada: " . $idIncidencia . " " . $descripcion) or die("Error escribiendo en el archivo log");
                         fclose($archivoLog);   
                         $incidencia = null;
-                        header('Location:vistaGlobal.php'); 
+                        echo "<script> alert('Registro borrado'); $(location).attr('href','vistaGlobal.php'); </script>"; 
                     } 
       
                 ?>

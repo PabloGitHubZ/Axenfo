@@ -67,7 +67,7 @@ $switchActual = $switch->getSwitch($idSwitch);
         fclose($archivoLog);
         
         $switch = null;    
-        header("Location:listadoControladoras.php");
+        echo "<script> alert('Registro modificado'); $(location).attr('href','vistaGlobal.php'); </script>"; 
     }
     
     ?>

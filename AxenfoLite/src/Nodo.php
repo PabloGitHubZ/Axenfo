@@ -10,13 +10,12 @@ class Nodo extends Conexion {
     private $nombre;
     private $ubicacion;
     private $direccion_fisica;
-    private $coordenadas;
+    private $latitud;
+    private $longitud;
     private $controladora;
     private $switch;
     private $olt;
-    private $con_incidencia;
     private $estado;
-    private $porcentaje;
     private $pendiente;
 
     public function __construct() {
@@ -85,13 +84,15 @@ class Nodo extends Conexion {
     }
 
     function creaNodo() {
-        $insert = "insert into nodos(nombre, ubicacion, direccion_fisica, controladora, olt, switch) values(:n, :u, :d, :c, :o, :s)";
+        $insert = "insert into nodos(nombre, ubicacion, direccion_fisica, latitud, longitud, controladora, olt, switch) values(:n, :u, :d, :l, :g, :c, :o, :s)";
         $stmt = $this->conexion->prepare($insert);
         try {
             $stmt->execute([
                 ':n' => $this->nombre,
                 ':u' => $this->ubicacion,
                 ':d' => $this->direccion_fisica,
+                ':l' => $this->latitud,
+                ':g' => $this->longitud,
                 ':c' => $this->controladora,
                 ':o' => $this->olt,
                 ':s' => $this->switch
@@ -102,14 +103,15 @@ class Nodo extends Conexion {
     }
 
     function actualizarNodo($id) {
-        $insert = "update nodos set ubicacion=:u, direccion_fisica=:d, coordenadas=:c, estado=:s, pendiente=:p where id=:i";
+        $insert = "update nodos set ubicacion=:u, direccion_fisica=:d, latitud=:c, longitud=:g, estado=:s, pendiente=:p where id=:i";
         $stmt = $this->conexion->prepare($insert);
         try {
             $stmt->execute([
                 ':i' => $id,
                 ':u' => $this->ubicacion,
                 ':d' => $this->direccion_fisica,
-                ':c' => $this->coordenadas,
+                ':c' => $this->latitud,
+                ':g' => $this->longitud,
                 ':s' => $this->estado,
                 ':p' => $this->pendiente
             ]);
@@ -118,6 +120,20 @@ class Nodo extends Conexion {
         }
     }
 
+    function actualizarNodoIncidencia($id) {
+        echo "<script> console.log('4'); </script>";
+        $insert = "update nodos set estado=:s where id=:i";
+        $stmt = $this->conexion->prepare($insert);
+        try {
+            $stmt->execute([
+                ':i' => $id,
+                ':s' => $this->estado
+            ]);
+        } catch (PDOException $ex) {
+            die("Error al actualizar nodo: " . $ex->getMessage());
+        }
+    }
+    
     function borrarNodo($id) {
         $borrado = "delete from nodos where id=:i";
         $stmt = $this->conexion->prepare($borrado);
@@ -163,8 +179,7 @@ class Nodo extends Conexion {
     } 
     public function getDireccion() {
         return $this->direccion_fisica;
-    }
-    
+    }  
     public function getControl() {
         return $this->controladora;
     }    
@@ -173,12 +188,17 @@ class Nodo extends Conexion {
     }    
     public function getOLT() {
         return $this->olt;
-    }    
-    
+    }      
     public function getEstado() {
         return $this->estado;
     }    
-
+    public function getLatitud() {
+        return $this->latitud;
+    }  
+    public function getLongitud() {
+        return $this->longitud;
+    }      
+    
     public function setNombre($nombre) {
         $this->nombre = $nombre;
     }
@@ -195,20 +215,15 @@ class Nodo extends Conexion {
         $this->estado = $estado;
     }
     
-   public function setCoordenadas($coordenadas) {
-        $this->coordenadas = $coordenadas;
+    public function setLatitud($latitud) {
+        $this->latitud = $latitud;
+    }
+    public function setLongitud($longitud) {
+        $this->longitud = $longitud;
     }
     
     public function setPendiente($pendiente) {
         $this->pendiente = $pendiente;
-    }
-    
-    public function setPorcentaje($porcentaje) {
-        $this->porcentaje = $porcentaje;
-    }
-    
-    public function setConIncidencia($con_incidencia) {
-        $this->con_incidencia = $con_incidencia;
     }
     
     public function setControl($controladora) {

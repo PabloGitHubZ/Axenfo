@@ -1,17 +1,9 @@
 <?php
-
 require 'cabecera.php';
-require_once "../src/Conexion.php";
-require_once "../src/Nodo.php";
-//require_once "../src/Incidencia.php";
-//require_once "../src/Controladora.php";
-//require_once "../src/Olt.php";
-//require_once "../src/Switch.php";
 use Clases\Nodo;
 
 $nodo = new Nodo();
 $idNodo = $_GET['nodo'];
-$_SESSION['nodo'] = $idNodo;
 $nodoActual = $nodo->getNodoID($idNodo);
 $nombre = $nodoActual->nombre;
 
@@ -20,7 +12,6 @@ $nombre = $nodoActual->nombre;
     <script type="text/javascript" src="js/borrar.js"></script>
     <div class="content-wrapper">
         <h1 class="page-header text-center">Actualizar <?php echo $nodoActual->nombre; ?></h1>
-        <a href="crearDispositivo.php?nodo=<?php echo $nodoActual->id; ?>"><button class="btn btn-warning"><i class='glyphicon glyphicon-plus'></i> Añadir Nuevo Dispositivo</button></a>
         <a href="configurarControladora.php?control=<?php echo $nodoActual->controladora; ?>"><button class="btn btn-warning"><i class='glyphicon glyphicon-arrow-up'></i> Actualizar Controladora</button></a>
         <a href="configurarOLT.php?olt=<?php echo $nodoActual->olt; ?>"><button class="btn btn-warning"><i class='glyphicon glyphicon-arrow-up'></i> Actualizar OLT</button></a>
         <a href="configurarSwitch.php?switch=<?php echo $nodoActual->switch; ?>"><button class="btn btn-warning"><i class='glyphicon glyphicon-arrow-up'></i> Actualizar Switch</button></a>
@@ -43,9 +34,13 @@ $nombre = $nodoActual->nombre;
                     <input class="form-control" type="text" name="direccion" id="direccion" value="<?php echo $nodoActual->direccion_fisica; ?>" required>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                    <label for="coordenadas">Coordenadas</label>
-                    <input class="form-control" type="text" name="coordenadas" id="coordenadas" value="<?php echo $nodoActual->coordenadas; ?>">
+                    <label for="latitud">Coordenadas: latitud</label>
+                    <input class="form-control" type="text" name="latitud" id="latitud" value="<?php echo $nodoActual->latitud; ?>">
                 </div>
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                    <label for="longitud">Coordenadas: longitud</label>
+                    <input class="form-control" type="text" name="longitud" id="longitud" value="<?php echo $nodoActual->longitud; ?>">
+                </div>                
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                     <label for="estado">Estado</label>
                     <output class="form-control" type="text"  name="estadoActual" id="estadoActual"><?php echo $nodoActual->estado; ?></output>
@@ -82,13 +77,15 @@ $nombre = $nodoActual->nombre;
     if (isset($_POST['guardar'])) {   
         $ubicacion = trim($_POST['ubicacion']);
         $direccion = trim($_POST['direccion']);
-        $coordenadas = trim($_POST['coordenadas']);
+        $latitud = trim($_POST['latitud']);
+        $longitud = trim($_POST['longitud']);
         $estado = $_POST['estado'];
         $pendiente = $_POST['pendiente'];
 
         $nodo->setUbicacion(ucwords($ubicacion));
         $nodo->setDireccion($direccion);
-        $nodo->setCoordenadas($coordenadas);
+        $nodo->setLatitud($latitud);
+        $nodo->setLongitud($longitud);
         $nodo->setEstado($estado);
         $nodo->setPendiente($pendiente);
         $nodo->actualizarNodo($idNodo);
@@ -98,6 +95,7 @@ $nombre = $nodoActual->nombre;
         fclose($archivoLog);
         
         $nodo = null;
+        echo "<script> alert('Registro modificado'); $(location).attr('href','vistaGlobal.php'); </script>"; 
     }
 
     ?>

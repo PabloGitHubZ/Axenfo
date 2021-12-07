@@ -1,9 +1,5 @@
 <?php
-
 require 'cabecera.php';
-require_once "../src/Conexion.php";
-require_once "../src/Incidencia.php";
-require_once "../src/Nodo.php";
 use Clases\Nodo;
 use Clases\Incidencia;
 
@@ -72,12 +68,14 @@ $idNodo = $nodoAfectado->id;
     <?php
 
     if (isset($_POST['guardar'])) {
+        
         $incidencia = new Incidencia();
         $fechaInicio = $_POST['fechaInicio'];
         $fechaCierre = $_POST['fechaCierre'];
         $tipo = $_POST['tipo'];
         $estado = $_POST['estado'];
         $descripcion = $_POST['descripcion'];
+        
         $incidencia->setNodo($idNodo);
         $incidencia->setFechaInicio($fechaInicio);
         $incidencia->setFechaCierre($fechaCierre);
@@ -90,8 +88,20 @@ $idNodo = $nodoAfectado->id;
         fwrite($archivoLog, "\n" . date("d/m/Y H:i:s") . " Cambio en incidencia: " . $idIncidencia . " " . $nombreNodo . " " . $fechaInicio . " " . $estado . " " . $fechaCierre) or die("Error escribiendo en el archivo log");
         fclose($archivoLog);
         
-        $incidencia = null;    
-        header("Location:configurarNodo.php?nodo=" . $nodo->getId());
+        if ($estado = "Cerrado") {
+            $nodo = new Nodo();
+            $estado_nodo = "Funcionando";
+            $nodo->setEstado($estado_nodo);
+            $nodo->actualizarNodoIncidencia($idNodo);
+            $archivoLog = fopen("log.txt", 'a') or die("Error creando archivo de log");
+            fwrite($archivoLog, "\n" . date("d/m/Y H:i:s") . " Cambio en nodo: " . $nombreNodo . " " . $estado_nodo) or die("Error escribiendo en el archivo log");
+            fclose($archivoLog);
+            $nodo = null; 
+        }
+        
+        $incidencia = null;   
+        echo "<script> alert('Registro modificado'); $(location).attr('href','vistaGlobal.php'); </script>"; 
     }
-    
+
     ?>
+  

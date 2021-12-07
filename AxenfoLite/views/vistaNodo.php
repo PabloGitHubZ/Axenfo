@@ -43,8 +43,12 @@ use Clases\Switcho;
                 <output class="form-control" type="text" name="direccion" id="direccion"><?php echo $nodoActual->direccion_fisica; ?></output>
             </div>
             <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                <label for="coordenadas">Coordenadas</label>
-                <output class="form-control" type="text" name="coordenadas" id="coordenadas"><?php echo $nodoActual->coordenadas; ?></output>
+                <label for="latitud">Coordenadas: Latitud</label>
+                <output class="form-control" type="text" name="latitud" id="latitud"><?php echo $nodoActual->latitud; ?></output>
+            </div>
+            <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <label for="longitud">Coordenadas: Longitud</label>
+                <output class="form-control" type="text" name="longitud" id="longitud"><?php echo $nodoActual->longitud; ?></output>
             </div>
             <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <label for="direccion">Estado:</label>

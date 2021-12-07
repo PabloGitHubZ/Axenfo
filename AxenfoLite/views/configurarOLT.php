@@ -72,7 +72,7 @@ $oltActual = $olt->getOlt($idOlt);
         fclose($archivoLog);
         
         $olt = null;    
-        header("Location:listadoControladoras.php");
+        echo "<script> alert('Registro modificado'); $(location).attr('href','vistaGlobal.php'); </script>"; 
     }
    
     ?>

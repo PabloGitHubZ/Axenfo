@@ -1,11 +1,6 @@
 <?php
 
 require 'cabecera.php';
-require_once "../src/Conexion.php";
-require_once "../src/Nodo.php";
-require_once "../src/Controladora.php";
-require_once "../src/Olt.php";
-require_once "../src/Switch.php";
 use Clases\Nodo;
 use Clases\Controladora;
 use Clases\Olt;
@@ -46,6 +41,8 @@ use Clases\Switcho;
         
         $ipInicial = "0.0.0.0";
         $serialInicial = "000000";
+        $latitud = "0";
+        $longitud = "0";
         $nombreControladora = "Controladora " . $nombre;
         $nombreOLT = "OLT " . $nombre;
         $nombreSwitch = "Switch " . $nombre;
@@ -92,6 +89,8 @@ use Clases\Switcho;
             $nodo->setNombre(ucwords($nombre));
             $nodo->setUbicacion(ucwords($ubicacion));
             $nodo->setDireccion($direccion);
+            $nodo->setLatitud($latitud);
+            $nodo->setLongitud($longitud);
             $nodo->setControl($controlActual->id);
             $nodo->setOlt($oltActual->id);
             $nodo->setSwitch($switchActual->id);
@@ -99,10 +98,12 @@ use Clases\Switcho;
             $archivoLog = fopen("log.txt", 'a') or die("Error creando archivo de log");
             fwrite($archivoLog, "\n" . date("d/m/Y H:i:s") . " Nuevo nodo: " . $nombre . " " . $ubicacion . " " . $direccion) or die("Error escribiendo en el archivo log");
             fclose($archivoLog);
-
+            
+            sleep(1);
             $nodo = null; $controladora = null; $olt = null; $switch = null;
-
-            header("Location:configurarNodo.php?nodo=" . $nodo->getId());
+            $nodo = new Nodo();
+            $nodoActual = $nodo->getNodo($nombre);
+            echo "<script> alert('Nodo creado'); $(location).attr('href','listadoNodos.php'); </script>"; 
         }
     }
     ?>

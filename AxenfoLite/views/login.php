@@ -1,5 +1,4 @@
 <?php
-
 require_once "../src/Conexion.php";
 require_once "../src/Usuario.php";
 use Clases\Usuario;
@@ -56,10 +55,9 @@ use Clases\Usuario;
         $pass = $_POST['pass'];
         $acceso = $usuario->comprobarUsuario($user, $pass);
         if ($acceso == true) { 
-            $_SESSION['usuario'] = $user;
             session_start();
-            $_SESSION['nodo'] = 0;
-            header('Location:vistaGlobal.php'); 
+            $_SESSION['usuario'] = $user;
+            header('Location:vistaGlobal.php');
         }
         else echo "<script> alert('Datos incorrectos'); </script>";  
     }

@@ -55,7 +55,7 @@ $controlActual = $controladora->getControladora($idControladora);
         fclose($archivoLog);
         
         $controladora = null;    
-        header("Location:listadoControladoras.php");
+        echo "<script> alert('Registro modificado'); $(location).attr('href','vistaGlobal.php'); </script>"; 
     }
    
     ?>

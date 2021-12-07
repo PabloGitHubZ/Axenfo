@@ -1,6 +1,5 @@
-<?php 
- 
-session_start(); 
+<?php
+session_start();
 require_once "../src/Conexion.php";
 require_once "../src/Usuario.php";
 require_once "../src/Nodo.php";
@@ -9,8 +8,8 @@ require_once "../src/Controladora.php";
 require_once "../src/Olt.php";
 require_once "../src/Switch.php";
 use Clases\Usuario;
-
 ?>
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -20,7 +19,6 @@ use Clases\Usuario;
     <link rel="stylesheet" type="text/css" href="../public/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../public/bootstrap/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="../public/dist/css/adminlte.css">
-    
     <!--  ******************  SCRIPTS  **************************  --> 
     <script src="../public/bootstrap/js/jquery.min.js"></script>
     <script src="../public/bootstrap/js/bootstrap.min.js"></script> 
