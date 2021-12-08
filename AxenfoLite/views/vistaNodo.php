@@ -1,12 +1,5 @@
 <?php
-
 require 'cabecera.php';
-require_once "../src/Conexion.php";
-require_once "../src/Nodo.php";
-require_once '../src/Controladora.php';
-require_once '../src/OLT.php';
-require_once '../src/Switch.php';
-
 use Clases\Nodo;
 use Clases\Controladora;
 use Clases\Olt;

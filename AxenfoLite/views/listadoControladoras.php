@@ -1,9 +1,5 @@
 <?php 
-
 require 'cabecera.php';
-require_once "../src/Conexion.php";
-require_once "../src/Nodo.php";
-require_once "../src/Controladora.php";
 use Clases\Nodo;
 use Clases\Controladora;
  

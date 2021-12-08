@@ -1,66 +1,29 @@
 
-07/12/2021 17:52:41 Nueva controladora: Controladora nodo pontevedra 0.0.0.0 000000
-07/12/2021 17:52:41 Nueva OLT: OLT nodo pontevedra 0.0.0.0 000000
-07/12/2021 17:52:41 Nuevo Switch: Switch nodo pontevedra 0.0.0.0 000000
-07/12/2021 17:52:41 Nuevo nodo: nodo pontevedra pontevedra rua valle inclan 34
-07/12/2021 17:53:33 Cambio en nodo: Nodo Pontevedra Pontevedra rua valle inclan 34 En construccion Pruebas físicas
-07/12/2021 17:55:30 Cambio en nodo: Nodo Pontevedra Pontevedra rua valle inclan 34 Funcionando Nada Pendiente
-07/12/2021 17:55:44 Nueva incidencia: 59 2021-12-07 Planta Externa fallo temperatura
-07/12/2021 17:55:44 Cambio en nodo: Nodo Pontevedra En incidencia
-07/12/2021 17:56:01 Cambio en incidencia: 40 Nodo Pontevedra 2021-12-07 Cerrado 2021-12-08
-07/12/2021 17:56:01 Cambio en nodo: Nodo Pontevedra Funcionando
-07/12/2021 18:05:16 Cambio en incidencia: 30 Nodo Lugo 2021-12-02 Abierto 2021-12-07
-07/12/2021 18:05:16 Cambio en nodo: Nodo Lugo Funcionando
-07/12/2021 18:23:41 Incidencia eliminada: 40 fallo temperatura
-07/12/2021 18:24:17 Incidencia eliminada: 40 
-07/12/2021 18:25:47 Incidencia eliminada: 30 fallo fibra interna lugo
-07/12/2021 18:31:50 Nodo eliminado: nodo santiago
-07/12/2021 18:31:50 Controladora eliminada: nodo santiago
-07/12/2021 18:31:50 OLT eliminada: nodo santiago
-07/12/2021 18:31:50 Switch eliminado: nodo santiago
-07/12/2021 18:33:21 Nodo eliminado: Nodo Prueba 998
-07/12/2021 18:33:21 Controladora eliminada: Nodo Prueba 998
-07/12/2021 18:33:21 OLT eliminada: Nodo Prueba 998
-07/12/2021 18:33:21 Switch eliminado: Nodo Prueba 998
-07/12/2021 18:33:30 Incidencia eliminada: 25 prueba 3
-07/12/2021 18:34:45 Cambio en controladora: Controladora prueba nodo 3 0.0.0.0 234234
-07/12/2021 18:36:50 Nueva controladora: Controladora nodo prueba 0.0.0.0 000000
-07/12/2021 18:36:50 Nueva OLT: OLT nodo prueba 0.0.0.0 000000
-07/12/2021 18:36:50 Nuevo Switch: Switch nodo prueba 0.0.0.0 000000
-07/12/2021 18:36:50 Nuevo nodo: nodo prueba vigo Llorente
-07/12/2021 18:51:58 Nueva controladora: Controladora nodo prueba 444 0.0.0.0 000000
-07/12/2021 18:51:58 Nueva OLT: OLT nodo prueba 444 0.0.0.0 000000
-07/12/2021 18:51:58 Nuevo Switch: Switch nodo prueba 444 0.0.0.0 000000
-07/12/2021 18:51:58 Nuevo nodo: nodo prueba 444 moaña principal 34
-07/12/2021 18:53:08 Nueva controladora: Controladora nodo prueba 34 0.0.0.0 000000
-07/12/2021 18:53:08 Nueva OLT: OLT nodo prueba 34 0.0.0.0 000000
-07/12/2021 18:53:08 Nuevo Switch: Switch nodo prueba 34 0.0.0.0 000000
-07/12/2021 18:53:08 Nuevo nodo: nodo prueba 34 moaña principal 34
-07/12/2021 18:58:20 Nodo eliminado: Nodo Prueba 34
-07/12/2021 18:58:20 Controladora eliminada: Nodo Prueba 34
-07/12/2021 18:58:20 OLT eliminada: Nodo Prueba 34
-07/12/2021 18:58:20 Switch eliminado: Nodo Prueba 34
-07/12/2021 18:58:32 Nodo eliminado: Nodo Prueba 444
-07/12/2021 18:58:32 Controladora eliminada: Nodo Prueba 444
-07/12/2021 18:58:32 OLT eliminada: Nodo Prueba 444
-07/12/2021 18:58:32 Switch eliminado: Nodo Prueba 444
-07/12/2021 18:58:57 Nueva controladora: Controladora nodo Moaña 0.0.0.0 000000
-07/12/2021 18:58:57 Nueva OLT: OLT nodo Moaña 0.0.0.0 000000
-07/12/2021 18:58:57 Nuevo Switch: Switch nodo Moaña 0.0.0.0 000000
-07/12/2021 18:58:57 Nuevo nodo: nodo Moaña moaña rua llorente
-07/12/2021 19:00:19 Nodo eliminado: Nodo Moaña
-07/12/2021 19:00:19 Controladora eliminada: Nodo Moaña
-07/12/2021 19:00:19 OLT eliminada: Nodo Moaña
-07/12/2021 19:00:19 Switch eliminado: Nodo Moaña
-07/12/2021 19:00:31 Nueva controladora: Controladora nodo Moaña 0.0.0.0 000000
-07/12/2021 19:00:31 Nueva OLT: OLT nodo Moaña 0.0.0.0 000000
-07/12/2021 19:00:31 Nuevo Switch: Switch nodo Moaña 0.0.0.0 000000
-07/12/2021 19:00:31 Nuevo nodo: nodo Moaña moaña Llorente
-07/12/2021 19:01:14 Nodo eliminado: Nodo Moaña
-07/12/2021 19:01:14 Controladora eliminada: Nodo Moaña
-07/12/2021 19:01:14 OLT eliminada: Nodo Moaña
-07/12/2021 19:01:14 Switch eliminado: Nodo Moaña
-07/12/2021 19:01:27 Nueva controladora: Controladora nodo Moaña 0.0.0.0 000000
-07/12/2021 19:01:27 Nueva OLT: OLT nodo Moaña 0.0.0.0 000000
-07/12/2021 19:01:27 Nuevo Switch: Switch nodo Moaña 0.0.0.0 000000
-07/12/2021 19:01:27 Nuevo nodo: nodo Moaña moaña Llorente
+08/12/2021 14:09:41 Cambio en controladora: Controladora Lugo 4.4.4.4 2342343234YYT
+08/12/2021 14:10:00 Cambio en controladora: Controladora Lugo 45.4.44.124 2342343234YYT
+08/12/2021 14:10:13 Cambio en controladora: Controladora Lugo 45.4.44.124.22 2342343234YYT
+08/12/2021 14:11:07 Cambio en controladora: Controladora Lugo 45.4.44.124.22 2342343234YYT
+08/12/2021 14:11:17 Cambio en controladora: Controladora Lugo 45.4.44.124 2342343234YYT
+08/12/2021 16:23:50 Cambio en controladora: Controladora Lugo 45.4.44. 2342343234YYT
+08/12/2021 16:24:29 Cambio en controladora: Controladora Lugo 45.4.44.34234234 2342343234YYT
+08/12/2021 16:34:15 Cambio en controladora: Controladora Lugo 88.55.2.55 2342343234YYT
+08/12/2021 16:49:52 Cambio en controladora: Controladora Lugo 88.55.2 2342343234YYT
+08/12/2021 16:57:33 Cambio en controladora: Controladora Lugo 88.55.2 2342343234YYT
+08/12/2021 17:00:06 Cambio en controladora: Controladora Lugo 88.55.233 2342343234YYT
+08/12/2021 17:00:42 Cambio en controladora: Controladora Lugo 88.55.233 2342343234YYT
+08/12/2021 17:00:49 Cambio en controladora: Controladora Lugo 88.55.233 2342343234YYT
+08/12/2021 17:02:44 Cambio en controladora: Controladora Lugo 88.55.233 2342343234YYT
+08/12/2021 17:03:34 Cambio en controladora: Controladora Lugo 88.55.233.44 2342343234YYT
+08/12/2021 17:03:41 Cambio en controladora: Controladora Lugo 88.55.233.500 2342343234YYT
+08/12/2021 17:04:11 Cambio en controladora: Controladora Lugo 8988.55.233.500 2342343234YYT
+08/12/2021 17:04:32 Cambio en controladora: Controladora Lugo 8988.55.233.500 2342343234YYT
+08/12/2021 17:05:12 Cambio en controladora: Controladora Lugo 89 2342343234YYT
+08/12/2021 17:05:23 Cambio en controladora: Controladora Lugo 500.50.20.2 2342343234YYT
+08/12/2021 17:05:46 Cambio en controladora: Controladora Lugo w00.50.20.2 2342343234YYT
+08/12/2021 17:06:02 Cambio en controladora: Controladora Lugo w00.50.20.2 2342343234YYT
+08/12/2021 17:06:53 Cambio en controladora: Controladora Lugo w00.50.20.2 2342343234YYT
+08/12/2021 17:07:20 Cambio en controladora: Controladora Lugo 500.50.20.2 2342343234YYT
+08/12/2021 17:07:49 Cambio en controladora: Controladora Lugo 500.50.20.2 2342343234YYT
+08/12/2021 17:08:02 Cambio en controladora: Controladora Lugo 500.50.20.2 2342343234YYT
+08/12/2021 17:08:27 Cambio en controladora: Controladora Lugo 356.50.20.2 2342343234YYT
+08/12/2021 17:23:33 Cambio en controladora: Controladora Lugo 356.50.20.2 2342343234YYT

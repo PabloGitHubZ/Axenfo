@@ -75,8 +75,8 @@ use Clases\Usuario;
                     </ul> 
                 </li><br>
       
-                <li><a style="color: darkblue" href="Página de documentacion"><i class="fa fa-question-circle"></i> <span></span>Ayuda</a></li>
-                <li><a style="color: darkblue" href="Página de datos de Axenfo"><i class="fa  fa-exclamation-circle"></i> <span></span>Acerca de</a></li>
+                <li><a style="color: darkblue" href="ayuda.php"><i class="fa fa-question-circle"></i> <span></span>Ayuda</a></li>
+                <li><a style="color: darkblue" href="acercaDe.php"><i class="fa  fa-exclamation-circle"></i> <span></span>Acerca de</a></li>
             </ul>
       
         </section>

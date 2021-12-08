@@ -62,8 +62,6 @@ use Clases\Usuario;
         else echo "<script> alert('Datos incorrectos'); </script>";  
     }
     ?>    
-
-<!--    <script type="text/javascript" src="js/login.js"></script>-->
-
+       
     </body>
 </html> 

@@ -1,5 +1,4 @@
 <?php
-
 require 'cabecera.php';
 use Clases\Nodo;
 use Clases\Incidencia;

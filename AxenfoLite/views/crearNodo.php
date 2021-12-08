@@ -26,7 +26,7 @@ use Clases\Switcho;
                 </div>
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <button class="btn btn-primary" type="submit" id="guardar" name="guardar"><i class="fa fa-save"></i> Guardar</button>
-                    <a id="btngrupos" href="vistaGlobal.php"><button class="btn btn-danger" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button></a>
+                    <a href="vistaGlobal.php"><button class="btn btn-danger" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button></a>
                 </div>
             </form>
         </div>
@@ -88,7 +88,7 @@ use Clases\Switcho;
 
             $nodo->setNombre(ucwords($nombre));
             $nodo->setUbicacion(ucwords($ubicacion));
-            $nodo->setDireccion($direccion);
+            $nodo->setDireccion(ucwords($direccion));
             $nodo->setLatitud($latitud);
             $nodo->setLongitud($longitud);
             $nodo->setControl($controlActual->id);

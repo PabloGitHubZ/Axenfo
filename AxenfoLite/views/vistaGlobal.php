@@ -1,9 +1,8 @@
 <?php
-
 require 'cabecera.php';
 use Clases\Nodo;
 use Clases\Incidencia;
-header("Refresh:30");
+//header("Refresh:30");
 ?>
  
 <html>

@@ -39,15 +39,6 @@ create table if not exists olts(
     numero_tarjetas int
 );
 
--- Tabla Tarjetas OLT
-create table if not exists tarjetas(
-    id int AUTO_INCREMENT primary key,
-    nombre varchar(30) not null,
-    olt int,
-    numero_serie varchar(30),
-    constraint fk_tar_olt foreign key(olt) references olts(id) on update cascade on delete cascade
-);
-
 -- Tabla Nodos
 create table if not exists nodos(
     id int AUTO_INCREMENT primary key,
@@ -69,7 +60,7 @@ create table if not exists nodos(
 -- Tabla Incidencias
 create table if not exists incidencias(
     id int AUTO_INCREMENT primary key,
-    nodo int,
+    nodo int not null,
     fecha_inicio date not null,
     fecha_cierre date,
     tipo enum('CPD', 'Planta Externa'),

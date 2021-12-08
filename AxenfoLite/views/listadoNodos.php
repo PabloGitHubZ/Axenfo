@@ -1,8 +1,5 @@
 <?php 
-
 require 'cabecera.php';
-require_once "../src/Conexion.php";
-require_once "../src/Nodo.php";
 use Clases\Nodo;
  
  ?>

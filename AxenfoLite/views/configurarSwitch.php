@@ -1,9 +1,5 @@
 <?php
-
 require 'cabecera.php';
-require_once "../src/Conexion.php";
-require_once "../src/Nodo.php";
-require_once "../src/Switch.php";
 use Clases\Nodo;
 use Clases\Switcho;
 
@@ -23,6 +19,7 @@ $switchActual = $switch->getSwitch($idSwitch);
             <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <label for="direccion">IP:</label>
                 <input type="text" class="form-control" name="ip" id="ip" value="<?php echo $switchActual->ip; ?>">
+                <button class="btn btn-warning" type="submit" id="comprobar" name="comprobar" onclick="validaIP()"><i class="fa fa-warning"></i> Comprobar IP</button>
             </div>
             <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <label for="marca">Marca:</label>
@@ -39,11 +36,12 @@ $switchActual = $switch->getSwitch($idSwitch);
               
             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <button class="btn btn-primary" type="submit" id="guardar" name="guardar"><i class="fa fa-save"></i> Guardar</button>
-                <a id="btngrupos" href="vistaGlobal.php"><button class="btn btn-danger" onclick="cancelarform()" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button></a>
+                <a href="vistaGlobal.php"><button class="btn btn-danger" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button></a>
             </div>
             </form>
         </div>
     </div>
+    <script type='text/javascript' src='../views/js/validarIP.js'></script>
     
     <?php
     

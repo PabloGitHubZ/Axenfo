@@ -58,13 +58,13 @@ $nombre = $nodoActual->nombre;
                         <option value="Instalación Equipos">Instalación Equipos</option> 
                         <option value="Implementación Red">Implementación Red</option> 
                         <option value="Configuración Equipos">Configuración Equipos</option>
-                        <option value="Pruebas físicas">Pruebas físicas</option> 
-                        <option value="Pruebas de Software">Pruebas de Software</option>
+                        <option value="Pruebas Físicas">Pruebas físicas</option> 
+                        <option value="Pruebas de Red">Pruebas de Red</option>
                     </select>
                 </div>
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <button class="btn btn-primary" type="submit" id="guardar" name="guardar"><i class="fa fa-save"></i> Guardar</button>
-                    <a id="btngrupos" href="vistaGlobal.php"><button class="btn btn-danger" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button></a>
+                    <a href="vistaGlobal.php"><button class="btn btn-danger" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button></a>
                 </div>
             </form>       
         </div>
