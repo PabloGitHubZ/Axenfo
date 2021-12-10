@@ -12,7 +12,7 @@ Se ha codificado prácticamente en su totalidad en PHP para facilitar la integra
 Futuro y objetivos:
 La aplicación tiene como objetivo final el control de los equipos, el estado real de los nodos y en futuro el estado de la red.
 La integración con herramientas de detección de incidencias es el próximo desafío en lo que se va a trabajar. 
-También se ha solicitado que a través de Google Maps u otra herramienta se puedan visualizar los cirtuitos y gestionarlos.
+También se ha solicitado que a través de Google Maps u otra herramienta se puedan visualizar los circuitos y gestionarlos.
 
 Histórico versiones:
 Noviembre - 2021: AxenfoLite 1.0 : Funcionalidad básica como CRUD de Nodos e Incidencias
