@@ -1,0 +1,12 @@
+
+10/12/2021 16:22:26 Cambio en incidencia: 51 nodo ourense 2021-12-08 Abierto 2021-12-08
+10/12/2021 16:22:26 Cambio en nodo: nodo ourense En incidencia
+11/12/2021 10:38:01 Nueva controladora: Controladora Nodo Cangas 0.0.0.0 000000
+11/12/2021 10:38:01 Nueva OLT: OLT Nodo Cangas 0.0.0.0 000000
+11/12/2021 10:38:01 Nuevo Switch: Switch Nodo Cangas 0.0.0.0 000000
+11/12/2021 10:38:01 Nuevo nodo: Nodo Cangas Cangas Praia de Rodeira s/n
+11/12/2021 10:38:21 Cambio en nodo: Nodo Cangas Cangas Praia De Rodeira S/n Funcionando Nada Pendiente
+11/12/2021 10:38:52 Nueva incidencia: 74 2021-12-11 Planta Externa Fallo cableado exterior CPD Cangas
+11/12/2021 10:38:52 Cambio en nodo: Nodo Cangas En incidencia
+11/12/2021 10:39:11 Cambio en incidencia: 52 Nodo Cangas 2021-12-11 Cerrado 
+11/12/2021 10:39:11 Cambio en nodo: Nodo Cangas Funcionando
