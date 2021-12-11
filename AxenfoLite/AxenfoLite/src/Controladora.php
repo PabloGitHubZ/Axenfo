@@ -6,15 +6,34 @@ use PDO;
 use PDOException;
 
 class Controladora extends Conexion {
+    /**
+    * @access protected
+    * @var integer
+    */
     private $id;
+    /**#@+
+    * @access protected
+    * @var string
+    */
     private $nombre;
     private $ip;
     private $numero_serie;
-
+    /**#@-*/
+    
+    // Constructor para la clase Controladora
     public function __construct() {
         parent::__construct();
     }
- 
+
+    /**
+    * getControladora
+    * 
+    * Obtiene el objeto controladora por su id
+    *
+    * @access public
+    * @param integer $id ID de la controladora
+    * @return objeto controladora
+    */      
     function getControladora($id) {
         $consulta = "select * from controladoras where id=:i";
         $stmt = $this->conexion->prepare($consulta);
@@ -27,6 +46,15 @@ class Controladora extends Conexion {
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
 
+    /**
+    * getControladoraN
+    * 
+    * Obtiene el objeto controladora por su nombre
+    *
+    * @access public
+    * @param string $nombre Nombre de la controladora
+    * @return objeto controladora
+    */      
     function getControladoraN($nombre) {
         $consulta = "select * from controladoras where nombre=:n";
         $stmt = $this->conexion->prepare($consulta);
@@ -38,7 +66,16 @@ class Controladora extends Conexion {
         $this->conexion = null;
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
-    
+
+    /**
+    * getControladoras
+    * 
+    * Obtiene todas las controladoras
+    *
+    * @access public
+    * @param 
+    * @return array con los objetos controladora de la BBDD
+    */      
     function getControladoras() {
         $consulta = "select * from controladoras order by id";
         $stmt = $this->conexion->prepare($consulta);
@@ -51,6 +88,15 @@ class Controladora extends Conexion {
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
+    /**
+    * existeControladora
+    * 
+    * Verifica si existe una controladora por su ID
+    *
+    * @access public
+    * @param integer $id ID de la controladora
+    * @return boolean true si existe, false si no existe
+    */    
     function existeControladora($d) {
         $consulta = "select * from controladoras where id=:i";
         $stmt = $this->conexion->prepare($consulta);
@@ -63,6 +109,15 @@ class Controladora extends Conexion {
         return true;
     }
 
+    /**
+    * nuevaControladora
+    * 
+    * Crea un nuevo registro en la BBDD controladoras
+    *
+    * @access public
+    * @param
+    * @return
+    */    
     function nuevaControladora() {
         $insert = "insert into controladoras(nombre, ip, numero_serie) values(:n, :p, :s)";
         $stmt = $this->conexion->prepare($insert);
@@ -77,6 +132,15 @@ class Controladora extends Conexion {
         }
     }
 
+    /**
+    * actualizarControladora
+    * 
+    * Actualiza una controladora por su ID
+    *
+    * @access public
+    * @param integer $id ID de la controladora
+    * @return
+    */    
     function actualizarControladora($id) {
         $insert = "update controladoras set nombre=:n, ip=:p, numero_serie=:s where id=:i";
         $stmt = $this->conexion->prepare($insert);
@@ -92,6 +156,15 @@ class Controladora extends Conexion {
         }
     }    
 
+    /**
+    * borraControladora
+    * 
+    * Elimina una controladora por su ID
+    *
+    * @access public
+    * @param integer $id ID de la controladora
+    * @return
+    */    
     function borrarControladora($id) {
         $borrado = "delete from controladoras where id=:i";
         $stmt = $this->conexion->prepare($borrado);
@@ -100,18 +173,7 @@ class Controladora extends Conexion {
         } catch (PDOException $ex) {
             die("Error al borrar controladoras: " . $ex->getMessage());
         }
-    }
-    
-    function borrarControladoras() {
-        $borrado = "delete from controladoras";
-        $stmt = $this->conexion->prepare($borrado);
-        try {
-            $stmt->execute();
-        } catch (PDOException $ex) {
-            die("Error al borrar controladoras: " . $ex->getMessage());
-        }
-    }
-    
+    }  
     
     // getters y setters ------------------------------
     

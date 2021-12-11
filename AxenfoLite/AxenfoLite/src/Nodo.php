@@ -6,22 +6,50 @@ use PDO;
 use PDOException;
 
 class Nodo extends Conexion {
+    /**
+    * @access protected
+    * @var integer
+    */ 
     private $id;
+    /**#@+
+    * @access protected
+    * @var string
+    */
     private $nombre;
     private $ubicacion;
     private $direccion_fisica;
     private $latitud;
     private $longitud;
+    /**#@+
+    * @access protected
+    * @var integer
+    */ 
     private $controladora;
     private $switch;
     private $olt;
+    /**#@-*/
+    /**#@+
+    * @access protected
+    * @var string
+    */
     private $estado;
     private $pendiente;
-
+    /**#@-*/
+    
+    // Constructor para la clase Nodo
     public function __construct() {
         parent::__construct();
     }
     
+    /**
+    * getNodo
+    * 
+    * Obtiene el objeto Nodo por su id
+    *
+    * @access public
+    * @param integer $id ID del Nodo
+    * @return objeto Nodo
+    */     
     function getNodoID($id) {
         $consulta = "select * from nodos where id=:i";
         $stmt = $this->conexion->prepare($consulta);
@@ -33,7 +61,16 @@ class Nodo extends Conexion {
         $this->conexion = null;
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
-    
+
+    /**
+    * getNodo
+    * 
+    * Obtiene el objeto Nodo por su nombre
+    *
+    * @access public
+    * @param string $nombre Nombre del Nodo
+    * @return objeto Nodo
+    */      
     function getNodo($nombre) {
         $consulta = "select * from nodos where nombre=:n";
         $stmt = $this->conexion->prepare($consulta);
@@ -45,7 +82,16 @@ class Nodo extends Conexion {
         $this->conexion = null;
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
-    
+
+    /**
+    * getNodos
+    * 
+    * Obtiene todas los Nodos
+    *
+    * @access public
+    * @param 
+    * @return array con los objetos Nodo de la BBDD
+    */          
     function getNodos() {
         $consulta = "select * from nodos order by id";
         $stmt = $this->conexion->prepare($consulta);
@@ -58,6 +104,15 @@ class Nodo extends Conexion {
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
+    /**
+    * buscarNodos
+    * 
+    * Busca en la tabla Nodos los que coincidan con la clave
+    *
+    * @access public
+    * @param string $clave clave para búsqueda
+    * @return array con lista de nodos coincidentes
+    */    
     function buscarNodos($clave) {
         $consulta = "select id, nombre, ubicacion, direccion_fisica, estado
                      from nodos where id like '%" . $clave . "%' or nombre like '%" . $clave . "%' or ubicacion like '%" . $clave . "%' or direccion_fisica like '%" . $clave  . "%' or estado like '%" . $clave . "%'";
@@ -70,7 +125,16 @@ class Nodo extends Conexion {
         $this->conexion = null;
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
-    
+
+    /**
+    * existeNodo
+    * 
+    * Verifica si existe un Nodo por su nombre
+    *
+    * @access public
+    * @param string $n Nombre del nodo
+    * @return boolean true si existe, false si no existe
+    */        
     function existeNodo($n) {
         $consulta = "select * from nodos where nombre=:n";
         $stmt = $this->conexion->prepare($consulta);
@@ -83,6 +147,15 @@ class Nodo extends Conexion {
         return true;
     }
 
+    /**
+    * creaNodo
+    * 
+    * Crea un nuevo registro en la BBDD Nodo
+    *
+    * @access public
+    * @param
+    * @return
+    */  
     function creaNodo() {
         $insert = "insert into nodos(nombre, ubicacion, direccion_fisica, latitud, longitud, controladora, olt, switch) values(:n, :u, :d, :l, :g, :c, :o, :s)";
         $stmt = $this->conexion->prepare($insert);
@@ -102,6 +175,15 @@ class Nodo extends Conexion {
         }
     }
 
+    /**
+    * actualizarNodo
+    * 
+    * Actualiza un Nodo por su ID
+    *
+    * @access public
+    * @param integer $id ID del Nodo
+    * @return
+    */  
     function actualizarNodo($id) {
         $insert = "update nodos set ubicacion=:u, direccion_fisica=:d, latitud=:c, longitud=:g, estado=:s, pendiente=:p where id=:i";
         $stmt = $this->conexion->prepare($insert);
@@ -120,6 +202,15 @@ class Nodo extends Conexion {
         }
     }
 
+    /**
+    * borraNodo
+    * 
+    * Elimina un Nodo por su ID
+    *
+    * @access public
+    * @param integer $id ID del Nodo
+    * @return
+    */  
     function actualizarNodoIncidencia($id) {
         echo "<script> console.log('4'); </script>";
         $insert = "update nodos set estado=:s where id=:i";
@@ -133,7 +224,16 @@ class Nodo extends Conexion {
             die("Error al actualizar nodo: " . $ex->getMessage());
         }
     }
-    
+
+    /**
+    * borraNodo
+    * 
+    * Elimina un Nodo por su ID
+    *
+    * @access public
+    * @param integer $id ID del Nodo
+    * @return
+    */      
     function borrarNodo($id) {
         $borrado = "delete from nodos where id=:i";
         $stmt = $this->conexion->prepare($borrado);
@@ -144,16 +244,15 @@ class Nodo extends Conexion {
         }
     }
     
-    function borrarNodos() {
-        $borrado = "delete from nodos";
-        $stmt = $this->conexion->prepare($borrado);
-        try {
-            $stmt->execute();
-        } catch (PDOException $ex) {
-            die("Error al borrar nodos: " . $ex->getMessage());
-        }
-    }
-
+    /**
+    * hayNodos
+    * 
+    * Comprueba si existen registros de nodos en la tabla nodos
+    *
+    * @access public
+    * @param 
+    * @return boolean true si hay registros, false si no los hay
+    */  
     function hayNodos() {
         $consulta = "select * from nodos";
         $stmt = $this->conexion->prepare($consulta);

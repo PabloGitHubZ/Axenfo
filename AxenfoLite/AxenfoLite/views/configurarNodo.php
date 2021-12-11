@@ -1,7 +1,7 @@
 <?php
 require 'cabecera.php';
 use Clases\Nodo;
-
+//Obtengo el nodo actual pasado por la URL
 $nodo = new Nodo();
 $idNodo = $_GET['nodo'];
 $nodoActual = $nodo->getNodoID($idNodo);
@@ -74,7 +74,7 @@ $nombre = $nodoActual->nombre;
     $nodo = new Nodo();
     $nombre = $nodoActual->nombre;
     
-    if (isset($_POST['guardar'])) {   
+    if (isset($_POST['guardar'])) { //Modificamos los datos en el registro
         $ubicacion = trim($_POST['ubicacion']);
         $direccion = trim($_POST['direccion']);
         $latitud = trim($_POST['latitud']);

@@ -7,7 +7,7 @@ use Clases\Controladora;
     <div class="content-wrapper">
         <section class="content">
         <div class="row">  
-        <div class="col-md-12">
+        <div class="col-md-12"> <!--    LISTA DE CONTROLADORAS    -->   
             <div class="box">
             <div class="box-header with-border">
                 <h1 class="box-title text-center">Lista de Controladoras</h1>

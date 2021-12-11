@@ -2,7 +2,7 @@
 require 'cabecera.php';
 use Clases\Nodo;
 use Clases\Controladora;
-
+//Obtengo la controladora actual pasada por la URL
 $controladora = new Controladora;
 $idControladora = $_GET['control'];
 $controlActual = $controladora->getControladora($idControladora);
@@ -42,7 +42,7 @@ $controlActual = $controladora->getControladora($idControladora);
     $ip = trim($_POST['ip']);
     $serial = trim($_POST['serial']);  
     
-    if (isset($_POST['guardar'])) {
+    if (isset($_POST['guardar'])) { //Modificamos los datos en el registro
         
         $controladora->setNombre(ucwords($nombre));
         $controladora->setIp($ip);

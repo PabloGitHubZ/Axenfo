@@ -2,7 +2,7 @@
 require 'cabecera.php';
 use Clases\Nodo;
 use Clases\Incidencia;
-
+//Obtengo la incidencia actual pasada por la URL y busco el nodo asociado
 $incidencia = new Incidencia();
 $idIncidencia = $_GET['incidencia'];
 $_SESSION['incidencia'] = $idIncidencia;
@@ -67,7 +67,7 @@ $idNodo = $nodoAfectado->id;
 
     <?php
 
-    if (isset($_POST['guardar'])) {
+    if (isset($_POST['guardar'])) { //Si queremos modificar la incidencia, actualizamos el registro comprobamos los nuevos datos recibidos para modificar el nodo asociado
         
         $incidencia = new Incidencia();
         $fechaInicio = $_POST['fechaInicio'];
@@ -88,7 +88,7 @@ $idNodo = $nodoAfectado->id;
         fwrite($archivoLog, "\n" . date("d/m/Y H:i:s") . " Cambio en incidencia: " . $idIncidencia . " " . $nombreNodo . " " . $fechaInicio . " " . $estado . " " . $fechaCierre) or die("Error escribiendo en el archivo log");
         fclose($archivoLog);
         
-        if ($estado == "Cerrado") {
+        if ($estado == "Cerrado") { //Si la incidencia pasa a "cerrada", hay que modificar el estado del nodo a "Funcionando"
             $nodo = new Nodo();
             $estado_nodo = "Funcionando";
             $nodo->setEstado($estado_nodo);
@@ -98,7 +98,7 @@ $idNodo = $nodoAfectado->id;
             fclose($archivoLog);
             $nodo = null; 
         }
-        if ($estado != "Cerrado") {
+        if ($estado != "Cerrado") { //Si la incidencia pasa a "abierta" o a "en curso", hay que modificar el estado del nodo a "En incidencia"
             $nodo = new Nodo();
             $estado_nodo = "En incidencia";
             $nodo->setEstado($estado_nodo);

@@ -34,7 +34,7 @@ use Clases\Switcho;
 
     <?php
 
-    if (isset($_POST['guardar'])) {
+    if (isset($_POST['guardar'])) { //Leemos el formulario, creamos el nodo con sus componentes y lo registramos en el log
         $nombre = trim($_POST['nombre']);
         $ubicacion = trim($_POST['ubicacion']);
         $direccion = trim($_POST['direccion']);
@@ -48,10 +48,9 @@ use Clases\Switcho;
         $nombreSwitch = "Switch " . $nombre;
         $nodo = new Nodo();
         
-        if ($nodo->existeNodo($nombre)) {
+        if ($nodo->existeNodo($nombre)) { //Si el nombre del nodo ya existe, avisamos de que ya existe
             $nodo = null;
-            echo "<script> alert('Ya existe ese nodo'); </script>";  
-            header("Location:vistaGlobal.php");
+            echo "<script> alert('Ya existe ese nodo'); $(location).attr('href','listadoNodos.php'); </script>";  
         }
         else {
             $controladora = new Controladora();
@@ -61,7 +60,7 @@ use Clases\Switcho;
             $controladora->setNombre($nombreControladora);
             $controladora->setIp($ipInicial);
             $controladora->setSn($serialInicial);
-            $controladora->nuevaControladora();
+            $controladora->nuevaControladora(); //Creamos la controladora y lo registramos
             $controlActual = $controladora->getControladoraN($nombreControladora);
             "<script> console.log('34234'); </script>";
             $archivoLog = fopen("log.txt", 'a') or die("Error creando archivo de log");
@@ -71,8 +70,8 @@ use Clases\Switcho;
             $olt->setNombre($nombreOLT);
             $olt->setIp($ipInicial);
             $olt->setSn($serialInicial);
-            $olt->nuevaOlt();
-            $oltActual = $olt->getOltN($nombreOLT);
+            $olt->nuevaOlt(); //Creamos la olt y lo registramos
+            $oltActual = $olt->getOltN($nombreOLT); 
             $archivoLog = fopen("log.txt", 'a') or die("Error creando archivo de log");
             fwrite($archivoLog, "\n" . date("d/m/Y H:i:s") . " Nueva OLT: " . $nombreOLT . " " . $ipInicial . " " . $serialInicial) or die("Error escribiendo en el archivo log");
             fclose($archivoLog);
@@ -80,7 +79,7 @@ use Clases\Switcho;
             $switch->setNombre($nombreSwitch);
             $switch->setIp($ipInicial);
             $switch->setSn($serialInicial);
-            $switch->nuevoSwitch();
+            $switch->nuevoSwitch(); //Creamos el switch y lo registramos
             $switchActual = $switch->getSwitchN($nombreSwitch);
             $archivoLog = fopen("log.txt", 'a') or die("Error creando archivo de log");
             fwrite($archivoLog, "\n" . date("d/m/Y H:i:s") . " Nuevo Switch: " . $nombreSwitch . " " . $ipInicial . " " . $serialInicial) or die("Error escribiendo en el archivo log");
@@ -94,12 +93,11 @@ use Clases\Switcho;
             $nodo->setControl($controlActual->id);
             $nodo->setOlt($oltActual->id);
             $nodo->setSwitch($switchActual->id);
-            $nodo->creaNodo();
+            $nodo->creaNodo(); //Creamos el nodo y lo registramos
             $archivoLog = fopen("log.txt", 'a') or die("Error creando archivo de log");
             fwrite($archivoLog, "\n" . date("d/m/Y H:i:s") . " Nuevo nodo: " . $nombre . " " . $ubicacion . " " . $direccion) or die("Error escribiendo en el archivo log");
             fclose($archivoLog);
             
-            sleep(1);
             $nodo = null; $controladora = null; $olt = null; $switch = null;
             $nodo = new Nodo();
             $nodoActual = $nodo->getNodo($nombre);

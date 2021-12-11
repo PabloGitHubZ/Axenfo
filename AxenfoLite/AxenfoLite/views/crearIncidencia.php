@@ -48,7 +48,7 @@ use Clases\Nodo;
 
     <?php
 
-    if (isset($_POST['guardar'])) {
+    if (isset($_POST['guardar'])) { //Leemos el formulario, grabamos el nuevo registro y modificamos el estado del nodo asociado a la incidencia
         
         $nodo = new Nodo();
 
@@ -74,7 +74,7 @@ use Clases\Nodo;
         fclose($archivoLog); 
         
         $nodo = new Nodo();
-        $nodo->setEstado($estado_nodo);
+        $nodo->setEstado($estado_nodo); 
         $nodo->actualizarNodoIncidencia($idNodo);
         $archivoLog = fopen("log.txt", 'a') or die("Error creando archivo de log");
         fwrite($archivoLog, "\n" . date("d/m/Y H:i:s") . " Cambio en nodo: " . $nombreNodo . " " . $estado_nodo) or die("Error escribiendo en el archivo log");

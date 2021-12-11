@@ -26,6 +26,8 @@ use Clases\Usuario;
 
 </head>
 <body>
+    
+    <!--    BARRA SUPERIOR    --> 
     <nav class="navbar navbar-static-top fixed">
         <a href="vistaGlobal.php" class="logo">
             <span class="title" style="color: black"><h1><b>AXENFO </b>| Xestión de Nodos</h1></span>
@@ -44,7 +46,7 @@ use Clases\Usuario;
             </ul>
         </ul>
     </nav>
-    
+    <!--    BARRA LATERAL IZQUIERDA    --> 
     <aside class="main-sidebar" style="background: #009999">
         <section class="sidebar">
             <a href="vistaGlobal.php" class="logo">

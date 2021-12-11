@@ -2,7 +2,7 @@
 require 'cabecera.php';
 use Clases\Nodo;
 use Clases\Switcho;
-
+//Obtengo el switch actual pasada por la URL
 $switch = new Switcho();
 $idSwitch = $_GET['switch'];
 $switchActual = $switch->getSwitch($idSwitch);
@@ -52,7 +52,7 @@ $switchActual = $switch->getSwitch($idSwitch);
     $marca = trim($_POST['marca']);
     $modelo = trim($_POST['modelo']);
     
-    if (isset($_POST['guardar'])) {
+    if (isset($_POST['guardar'])) { //Modificamos los datos en el registro
         $switch->setNombre(ucwords($nombre));
         $switch->setIp($ip);
         $switch->setSn($serial);

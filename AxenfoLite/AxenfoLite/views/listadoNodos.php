@@ -5,7 +5,7 @@ use Clases\Nodo;
  ?>
     <div class="content-wrapper">
         <section class="content">
-        <div class="row">  
+        <div class="row">  <!--    LISTA DE NODOS    -->  
         <div class="col-md-12">
             <div class="box">
             <div class="box-header with-border">

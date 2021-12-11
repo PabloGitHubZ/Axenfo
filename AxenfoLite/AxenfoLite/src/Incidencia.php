@@ -6,18 +6,37 @@ use PDO;
 use PDOException;
 
 class Incidencia extends Conexion {
-    private $id;
+    /**
+    * @access protected
+    * @var integer
+    */ 
+    private $id;    
     private $nodo;
+    /**#@+
+    * @access protected
+    * @var string
+    */
     private $fecha_inicio;
     private $fecha_cierre;
     private $tipo;
     private $descripcion;
     private $estado;
-
+    /**#@-*/
+    
+    // Constructor para la clase Incidencia
     public function __construct() {
         parent::__construct();
     }
-
+    
+    /**
+    * getIncidencia
+    * 
+    * Obtiene el objeto Incidencia por su id
+    *
+    * @access public
+    * @param integer $id ID de la Incidencia
+    * @return objeto Incidencia
+    */ 
     function getIncidencia($id) {
         $consulta = "select * from incidencias where id=:i";
         $stmt = $this->conexion->prepare($consulta);
@@ -29,7 +48,16 @@ class Incidencia extends Conexion {
         $this->conexion = null;
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
-    
+
+    /**
+    * getIncidencias
+    * 
+    * Obtiene todas las Incidencias
+    *
+    * @access public
+    * @param 
+    * @return array con los objetos Incidencias de la BBDD
+    */          
     function getIncidencias() {
         $consulta = "select * from incidencias order by id";
         $stmt = $this->conexion->prepare($consulta);
@@ -42,6 +70,15 @@ class Incidencia extends Conexion {
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
+    /**
+    * existeIncidencia
+    * 
+    * Verifica si existe una Incidencia por su nodo asociado
+    *
+    * @access public
+    * @param integer $n ID del nodo asociado
+    * @return boolean true si existe false si no existe
+    */    
     function existeIncidencia($n) {
         $consulta = "select * from incidencias where nodo=:n";
         $stmt = $this->conexion->prepare($consulta);
@@ -53,7 +90,16 @@ class Incidencia extends Conexion {
         if ($stmt->rowCount() == 0) return false;
         return true;
     }
-    
+
+    /**
+    * buscarIncidencias
+    * 
+    * Busca si existen incidencias mediante una clave
+    *
+    * @access public
+    * @param string $clave clave de búsqueda
+    * @return array listado de objetos incidencia
+    */        
     function buscarIncidencias($clave) {
         $consulta = "select nodo, fecha_inicio, tipo, descripcion, estado
                      from incidencias where nodo like '%" . $clave . "%' or fecha_inicio like '%" . $clave . "%' or tipo like '%" . $clave . "%' or descripcion like '%" . $clave . "%' or estado like '%" . $clave . "%'";
@@ -66,7 +112,16 @@ class Incidencia extends Conexion {
         $this->conexion = null;
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
-    
+
+    /**
+    * creaIncidencia
+    * 
+    * Crea un nuevo registro en la BBDD Incidencias
+    *
+    * @access public
+    * @param
+    * @return
+    */       
     function creaIncidencia() {
         $insert = "insert into incidencias(nodo, fecha_inicio, tipo, descripcion, estado) values(:n, :f, :t, :d, :e)";
         $stmt = $this->conexion->prepare($insert);
@@ -83,6 +138,15 @@ class Incidencia extends Conexion {
         }
     }
 
+    /**
+    * actualizaIncidencia
+    * 
+    * Actualiza una Incidencia por su ID
+    *
+    * @access public
+    * @param integer $id ID de la Incidencia
+    * @return
+    */  
     function actualizarIncidencia($id) {
         $insert = "update incidencias set nodo=:n, fecha_inicio=:f, fecha_cierre=:c, tipo=:t, descripcion=:d, estado=:e where id=:i";
         $stmt = $this->conexion->prepare($insert);
@@ -101,6 +165,15 @@ class Incidencia extends Conexion {
         }
     }    
 
+    /**
+    * borrarIncidencia
+    * 
+    * Elimina una Incidencia por su ID
+    *
+    * @access public
+    * @param integer $id ID de la Incidencia
+    * @return
+    */  
     function borrarIncidencia($id) {
         $borrado = "delete from incidencias where id=:i";
         $stmt = $this->conexion->prepare($borrado);
@@ -110,17 +183,16 @@ class Incidencia extends Conexion {
             die("Error al borrar incidencia: " . $ex->getMessage());
         }
     }
-    
-    function borrarIncidencias() {
-        $borrado = "delete from incidencias";
-        $stmt = $this->conexion->prepare($borrado);
-        try {
-            $stmt->execute();
-        } catch (PDOException $ex) {
-            die("Error al borrar incidencias: " . $ex->getMessage());
-        }
-    }
 
+    /**
+    * hayControladora
+    * 
+    * Comprueba si hay Incidencias en la BBDD
+    *
+    * @access public
+    * @param 
+    * @return boolean true si hay incidencias, false si no las hay
+    */  
     function hayIncidencias() {
         $consulta = "select * from incidencias";
         $stmt = $this->conexion->prepare($consulta);

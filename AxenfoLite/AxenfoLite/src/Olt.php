@@ -6,18 +6,41 @@ use PDO;
 use PDOException;
 
 class Olt extends Conexion {
+    /**
+    * @access protected
+    * @var integer
+    */ 
     private $id;
+    /**#@+
+    * @access protected
+    * @var string
+    */
     private $nombre;
     private $ip;
     private $marca;
     private $modelo;
     private $numero_serie;
+    /**#@-*/
+    /**
+    * @access protected
+    * @var integer
+    */
     private $numero_tarjetas;
-
+    
+    
+    // Constructor para la clase OLT
     public function __construct() {
         parent::__construct();
     }
- 
+    /**
+    * getOlt
+    * 
+    * Obtiene el objeto Olt por su id
+    *
+    * @access public
+    * @param integer $id ID de la Olt
+    * @return objeto Olt
+    */  
     function getOlt($id) {
         $consulta = "select * from olts where id=:i";
         $stmt = $this->conexion->prepare($consulta);
@@ -30,6 +53,15 @@ class Olt extends Conexion {
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
 
+    /**
+    * getOltN
+    * 
+    * Obtiene el objeto Olt por su nombre
+    *
+    * @access public
+    * @param string $nombre Nombre de la Olt
+    * @return objeto Olt
+    */  
     function getOltN($nombre) {
         $consulta = "select * from olts where nombre=:n";
         $stmt = $this->conexion->prepare($consulta);
@@ -41,7 +73,16 @@ class Olt extends Conexion {
         $this->conexion = null;
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
-    
+
+    /**
+    * getOlts
+    * 
+    * Obtiene todas las Olts
+    *
+    * @access public
+    * @param 
+    * @return array con los objetos Olt de la BBDD
+    */          
     function getOlts() {
         $consulta = "select * from olts order by id";
         $stmt = $this->conexion->prepare($consulta);
@@ -54,6 +95,15 @@ class Olt extends Conexion {
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
+    /**
+    * existeOlt
+    * 
+    * Verifica si existe una Olt por su ID
+    *
+    * @access public
+    * @param integer $id ID de la Olt
+    * @return boolean true si existe, false si no existe
+    */    
     function existeOlt($d) {
         $consulta = "select * from olts where id=:i";
         $stmt = $this->conexion->prepare($consulta);
@@ -66,6 +116,15 @@ class Olt extends Conexion {
         return true;
     }
 
+    /**
+    * nuevaOlt
+    * 
+    * Crea un nuevo registro en la BBDD Olt
+    *
+    * @access public
+    * @param
+    * @return
+    */  
     function nuevaOlt() {
         $insert = "insert into olts(nombre, ip, numero_serie) values(:n, :p, :s)";
         $stmt = $this->conexion->prepare($insert);
@@ -80,6 +139,15 @@ class Olt extends Conexion {
         }
     }
 
+    /**
+    * actualizarOlt
+    * 
+    * Actualiza una Olt por su ID
+    *
+    * @access public
+    * @param integer $id ID de la Olt
+    * @return
+    */  
     function actualizarOlts($id) {
         $insert = "update olts set nombre=:n, ip=:p, marca=:m, modelo=:d, numero_serie=:s, numero_tarjetas=:t where id=:i";
         $stmt = $this->conexion->prepare($insert);
@@ -98,6 +166,15 @@ class Olt extends Conexion {
         }
     }    
 
+    /**
+    * borrarOlt
+    * 
+    * Elimina una Olt por su ID
+    *
+    * @access public
+    * @param integer $id ID de la Olt
+    * @return
+    */  
     function borrarOlt($id) {
         $borrado = "delete from olts where id=:i";
         $stmt = $this->conexion->prepare($borrado);
@@ -107,17 +184,7 @@ class Olt extends Conexion {
             die("Error al borrar olt: " . $ex->getMessage());
         }
     }
-    
-    function borrarOlts() {
-        $borrado = "delete from olts";
-        $stmt = $this->conexion->prepare($borrado);
-        try {
-            $stmt->execute();
-        } catch (PDOException $ex) {
-            die("Error al borrar olts: " . $ex->getMessage());
-        }
-    }
-    
+
     
     // getters y setters ------------------------------
     

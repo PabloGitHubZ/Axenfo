@@ -33,9 +33,9 @@ use Clases\Incidencia;
                     <?php
 
                         $nodo = new Nodo();
-                        $nodos = $nodo->getNodos();
+                        $nodos = $nodo->getNodos(); //Obtiene todos los nodos
                         foreach ($nodos as $nodo) {
-                            if ($nodo->estado == "En construcción") {
+                            if ($nodo->estado == "En construcción") { //Y muestra los que están en construcción
                     ?>
                             <tr>
                                 <td><?php echo $nodo->nombre; ?></td>
@@ -89,11 +89,11 @@ use Clases\Incidencia;
                     <?php
                     
                         $incidencia = new Incidencia();
-                        $incidencias = $incidencia->getIncidencias();
+                        $incidencias = $incidencia->getIncidencias(); //Obtiene todos los nodos
                         foreach ($incidencias as $incidencia) {
                             if ($incidencia->estado != "Cerrado") {
                                 $nodo = new Nodo();
-                                $nodoAfectado = $nodo->getNodoID($incidencia->nodo);
+                                $nodoAfectado = $nodo->getNodoID($incidencia->nodo); //Y muestra las que están abiertas o en curso
                     ?>
                             <tr>
                                 <td><?php echo $incidencia->fecha_inicio; ?></td>
@@ -121,8 +121,6 @@ use Clases\Incidencia;
     <div class="container iframe-mode" id="map" data-widget="iframe" style="width:600; height:500px" data-loading-screen="100">    
         <script async src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap"></script>
         <?php include '../mapa.php'; ?>
-        <!--<script type="text/javascript" src="js/mapa.js"></script>-->
-
     </div>
     </div>
 </body>

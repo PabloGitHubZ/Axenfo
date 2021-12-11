@@ -11,7 +11,7 @@ use Clases\Switcho;
 <html>
 <body>
 <div class="content-wrapper">
-    <section class="content">
+    <section class="content"><!--    AVISO DE BORRADO    --> 
         <div class="box-header with-border">  
             <h1 class="box-title text-center">Cuidado! <br> ¿Estás seguro quieres eliminar este registro?<br> 
                 <button class="btn btn-danger"><i class="glyphicon glyphicon-alert"></i></button> Los datos no se podrán recuperar <button class="btn btn-danger"><i class="glyphicon glyphicon-alert"></i></button>
@@ -23,7 +23,7 @@ use Clases\Switcho;
                 
                 <?php
                 
-                if (isset($_GET['nodo'])) {
+                if (isset($_GET['nodo'])) { // Si es un nodo lo que se quiere borrar, muestra los datos del nodo
                     $nodo = new Nodo(); 
                     $controladora = new Controladora;
                     $olt = new Olt();
@@ -39,7 +39,7 @@ use Clases\Switcho;
                     $idSwitch = $nodoActual->switch;
                 }
                 
-                if (isset($_GET['incidencia'])) {
+                if (isset($_GET['incidencia'])) { // Si es una incidencia lo que se quiere borrar, muestra los datos de la incidencia
                     $incidencia = new Incidencia();
                     $idIncidencia = $_GET['incidencia'];
                     $opcion = "incidencia";
@@ -61,7 +61,7 @@ use Clases\Switcho;
                 </div>
                 
                 <?php
-                    if (isset($_POST['borrar']) and ($opcion == "nodo")) {
+                    if (isset($_POST['borrar']) and ($opcion == "nodo")) { // Si es un nodo lo que se quiere borrar, lo borra y guarda el registro
                         $nodo = new Nodo();
                         $controladora = new Controladora;
                         $olt = new Olt();
@@ -80,7 +80,7 @@ use Clases\Switcho;
                         echo "<script> alert('Registro borrado'); $(location).attr('href','vistaGlobal.php'); </script>"; 
                     }
                     
-                    if (isset($_POST['borrar']) and ($opcion == "incidencia")) {
+                    if (isset($_POST['borrar']) and ($opcion == "incidencia")) { // Si es una incidencia lo que se quiere borrar, la borra y guarda el registro
                         $incidencia = new Incidencia();
                         $incidencia->borrarIncidencia($idIncidencia);
                         $archivoLog = fopen("log.txt", 'a') or die("Error creando archivo de log");

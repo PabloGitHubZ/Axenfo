@@ -41,7 +41,7 @@ use Clases\Incidencia;
                 foreach ($busqueda as $nodo) {
 
             ?>
-                <tr>
+                <tr> <!--   RESULTADOS DE LA BÚSQUEDA EN NODOS   -->
                     <td><?php echo $nodo->nombre; ?></td>
                     <td><?php echo $nodo->ubicacion; ?></td>
                     <td><?php echo $nodo->direccion_fisica; ?></td>
@@ -77,7 +77,7 @@ use Clases\Incidencia;
             if ($busqueda_2 != null) {
                 foreach ($busqueda_2 as $incidencia) {
             ?>
-                <tr>
+                <tr> <!--   RESULTADOS DE LA BÚSQUEDA EN INCIDENCIAS  -->
                     <td><?php echo $incidencia->nodo; ?></td>
                     <td><?php echo $incidencia->fecha_inicio; ?></td>
                     <td><?php echo $incidencia->descripcion; ?></td>
@@ -94,7 +94,7 @@ use Clases\Incidencia;
             </tbody>  
             </table>
 
-        <?php
+        <?php //Mensaje si no hay resultados en nodos ni en incidencias.
         if ($busqueda == null && $busqueda_2 == null) echo '<h2>No se encuentran resultados con los criterios de búsqueda indicados.</h2>';
         }
         ?>

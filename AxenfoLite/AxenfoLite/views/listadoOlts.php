@@ -6,7 +6,7 @@ use Clases\Olt;
  ?>
     <div class="content-wrapper">
         <section class="content">
-        <div class="row">  
+        <div class="row">  <!--    LISTA DE OLTS    -->  
         <div class="col-md-12">
             <div class="box">
             <div class="box-header with-border">

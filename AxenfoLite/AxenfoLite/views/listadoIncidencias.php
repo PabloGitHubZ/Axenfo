@@ -6,7 +6,7 @@ use Clases\Incidencia;
  ?>
     <div class="content-wrapper">
         <section class="content">
-        <div class="row">  
+        <div class="row">   <!--    LISTA DE INCIDENCIAS    -->  
         <div class="col-md-12">
             <div class="box">
             <div class="box-header with-border">
@@ -40,7 +40,7 @@ use Clases\Incidencia;
                     $incidencias = $incidencia->getIncidencias();
                     foreach ($incidencias as $incidencia) {
                         $nodo = new Nodo();
-                        $nodoAfectado = $nodo->getNodoID($incidencia->nodo);
+                        $nodoAfectado = $nodo->getNodoID($incidencia->nodo); // En cada incidencia buscamos el nodo asociado para mostrar el nombre y no el ID
                 ?>
                     <tr>
                         <td><?php echo $incidencia->id; ?></td>

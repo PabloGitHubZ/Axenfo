@@ -49,7 +49,7 @@ use Clases\Usuario;
         
     <?php
     
-    if (isset($_POST['ingresar'])) {
+    if (isset($_POST['ingresar'])) { //Si se ha escrito correctamente el usuario y la clave lo comprobamos en la tabla usuario y accedemos a la vista general
         $usuario = new Usuario();
         $user = $_POST['user'];
         $pass = $_POST['pass'];

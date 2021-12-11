@@ -2,7 +2,7 @@
 require 'cabecera.php';
 use Clases\Nodo;
 use Clases\Olt;
-
+//Obtengo la olt actual pasada por la URL
 $olt = new Olt();
 $idOlt = $_GET['olt'];
 $oltActual = $olt->getOlt($idOlt);
@@ -56,7 +56,7 @@ $oltActual = $olt->getOlt($idOlt);
     $modelo = trim($_POST['modelo']);
     $tarjetas = trim($_POST['tarjetas']);
     
-    if (isset($_POST['guardar'])) {
+    if (isset($_POST['guardar'])) { //Modificamos los datos en el registro
         $olt->setNombre(ucwords($nombre));
         $olt->setIp($ip);
         $olt->setSn($serial);

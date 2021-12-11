@@ -9,9 +9,8 @@ use Clases\Switcho;
     $controladora = new Controladora();
     $olt = new Olt();
     $switch = new Switcho();
-    
+    //Obtengo el nodo actual pasado por la URL
     $idNodo = $_GET['nodo'];
-    $_SESSION['nodo'] = $idNodo;
 
     $nodoActual = $nodo->getNodoID($idNodo);
     $numeroControladora = $nodoActual->controladora;
@@ -55,7 +54,7 @@ use Clases\Switcho;
     
 <?php    
  
-    if ($numeroControladora != null) {
+    if ($numeroControladora != null) { //Buscamos la controladora asociada al nodo y la mostramos
         $controladoraActual = $controladora->getControladora($numeroControladora);
 
 ?>
@@ -83,7 +82,7 @@ use Clases\Switcho;
 <?php    
     
     }
-    if ($numeroOlt != null) {
+    if ($numeroOlt != null) { //Buscamos la olt asociada al nodo y la mostramos
         $oltActual = $olt->getOlt($numeroOlt);
 
 ?>
@@ -122,7 +121,7 @@ use Clases\Switcho;
 <?php
 
     }
-    if ($numeroSwitch != null) {
+    if ($numeroSwitch != null) { //Buscamos el switch asociada al nodo y lo mostramos
         $switchActual = $switch->getSwitch($numeroSwitch);
 
 ?>    
