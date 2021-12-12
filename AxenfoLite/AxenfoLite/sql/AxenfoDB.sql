@@ -51,7 +51,7 @@ create table if not exists nodos(
     switch int,
     olt int,
     estado enum('En construcción', 'Funcionando', 'En incidencia'),
-    pendiente ('Nada Pendiente', 'Instalación Equipos', 'Implementación Red', 'Configuración Equipos', 'Pruebas Físicas', 'Pruebas de Red'),
+    pendiente enum('Nada Pendiente', 'Instalación Equipos', 'Implementación Red', 'Configuración Equipos', 'Pruebas Físicas', 'Pruebas de Red'),
     constraint fk_nod_control foreign key(controladora) references controladoras(id) on update cascade on delete cascade,
     constraint fk_nod_switch foreign key(switch) references switches(id) on update cascade on delete cascade,
     constraint fk_nod_olt foreign key(olt) references olts(id) on update cascade on delete cascade
