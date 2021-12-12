@@ -42,7 +42,7 @@ INSERT INTO switches (id, nombre, ip, marca, modelo, numero_serie)
 INSERT INTO switches (id, nombre, ip, marca, modelo, numero_serie)
   VALUES ('6', 'switch lugo', '44.34.123.7' , 'cisco', '34Z43', '4618811RE');
 
-INSERT INTO nodos (nombre, ubicacion, direccion_fisica, latitud, longitud, controladora, switch, olt, estado, pendiente)
+INSERT INTO nodos (id, nombre, ubicacion, direccion_fisica, latitud, longitud, controladora, switch, olt, estado, pendiente)
   VALUES ('1', 'Nodo Santiago', 'Santiago de Compostela' , 'rua castelao 12' , '42.879378', '-8.551017', '1' , '1' , '1', 'Funcionando', 'Nada Pendiente');
 INSERT INTO nodos (nombre, ubicacion, direccion_fisica, latitud, longitud, controladora, switch, olt, estado, pendiente)
   VALUES ('2', 'Nodo Vigo', 'Vigo' , 'rua emilia pardo bazan 3' , '42.232302', '-8.726606', '2' , '2' , '2', 'En construcción', 'Instalación Equipos');
