@@ -1,13 +1,6 @@
 <script type="text/javascript">
     var map;
     var pathCoordinates = Array();
-    
-    <!--/**
-     * Crea el mapa de Google Maps
-     * 
-     * @param google.maps.Map map mapa de Google Maps
-     *
-     */-->
 
     function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
