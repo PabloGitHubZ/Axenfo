@@ -69,5 +69,5 @@
 //                strokeWeight : 4,
 //                map : map
 //        });
-//    }
+    }
 </script> 
